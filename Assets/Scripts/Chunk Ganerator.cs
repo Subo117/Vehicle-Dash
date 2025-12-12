@@ -18,6 +18,7 @@ public class ChunkGanerator : MonoBehaviour
     [SerializeField] List<GameObject> obstacles = new List<GameObject>();
 
     List<GameObject> chunks = new List<GameObject>();
+    List<GameObject> tempChunks = new List<GameObject>();
     List<GameObject> obstaclesCollection = new List<GameObject>();
 
 
@@ -39,18 +40,8 @@ public class ChunkGanerator : MonoBehaviour
 
     private void Update()
     {
-        chunkMoveSpeed = gameSpeedManager.currentSpeed;
-
-        for(int i = 0; i < obstaclesCollection.Count; i++)
-        {
-            
-            GameObject chunk = chunks[i];
-            chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
-
-            GameObject obstacle = obstaclesCollection[i];
-            obstacle.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
-        }
-
+        MoveTempChunk();
+        MoveChunk();
         ManageChunk();
         
     }
@@ -60,7 +51,7 @@ public class ChunkGanerator : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             GameObject chunk =  Instantiate(RoadPrefab, new Vector3(transform.position.x, transform.position.y, i * chunkDist), Quaternion.identity, chunkParent);
-
+            tempChunks.Add(chunk);
         }
         for (int road = 0; road < noOfRoads; road++)
         {
@@ -75,6 +66,30 @@ public class ChunkGanerator : MonoBehaviour
 
         }
     }
+    void MoveTempChunk()
+    {
+        foreach(GameObject chunk in tempChunks)
+        {
+            chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+
+        }
+    }
+
+    void MoveChunk()
+    {
+        chunkMoveSpeed = gameSpeedManager.currentSpeed;
+
+        for (int i = 0; i < obstaclesCollection.Count; i++)
+        {
+
+            GameObject chunk = chunks[i];
+            chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+
+            GameObject obstacle = obstaclesCollection[i];
+            obstacle.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+        }
+    }
+
 
     void ManageChunk()
     {
