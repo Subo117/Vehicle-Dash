@@ -59,8 +59,8 @@
                 {
                     "name": "",
                     "id": "101265f8-2092-4d54-b985-c97d3e886ef1",
-                    "path": "",
-                    "interactions": "",
+                    "path": "<Keyboard>/w",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Accelerate",

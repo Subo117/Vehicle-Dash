@@ -9,7 +9,6 @@ public class PlayerControl : MonoBehaviour
 
     InputAction left;
     InputAction right;
-    InputAction accelarate;
 
     Animator animator;
     float laneDistance = 15f;
@@ -20,7 +19,6 @@ public class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         left = InputSystem.actions.FindAction("Left");
         right = InputSystem.actions.FindAction("Right");
-        accelarate = InputSystem.actions.FindAction("Accelerate");
 
     }
     
