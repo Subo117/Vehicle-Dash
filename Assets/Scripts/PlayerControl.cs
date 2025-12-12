@@ -7,6 +7,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] GameObject playerModel;
     [SerializeField] float moveSpeed = 100f;
 
+    InputAction left;
+    InputAction right;
+    InputAction accelarate;
+
     Animator animator;
     float laneDistance = 15f;
     int currentLane = 0;
@@ -14,17 +18,21 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-    }
+        left = InputSystem.actions.FindAction("Left");
+        right = InputSystem.actions.FindAction("Right");
+        accelarate = InputSystem.actions.FindAction("Accelerate");
 
+    }
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && currentLane > -1)
+        if (left.WasPressedThisFrame() && (currentLane > -1))
         {
             currentLane--;
             animator.Play("Turn Left", 0, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && currentLane < 1)
+        if (right.WasPressedThisFrame() && currentLane < 1)
         {
             currentLane++;
             animator.Play("Turn Right", 0, 0f);
