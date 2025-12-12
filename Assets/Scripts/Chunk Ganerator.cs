@@ -8,11 +8,18 @@ public class ChunkGanerator : MonoBehaviour
     [SerializeField] Transform chunkParent;
     [SerializeField] int noOfRoads = 15;
     [SerializeField] int chunkDist = 40;
-    [SerializeField] float chunkMoveSpeed = 10f;
-    [SerializeField] float minChunkRangeOfZ = -50;
+    [SerializeField] float minChunkRangeOfZ = -50f;
 
     List<GameObject> chunks = new List<GameObject>();
 
+    GameSpeedManager gameSpeedManager;
+
+    [SerializeField] float chunkMoveSpeed = 15f;
+
+    private void Awake()
+    {
+        gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
+    }
     private void Start()
     {
         GenerateChunk();
@@ -20,6 +27,7 @@ public class ChunkGanerator : MonoBehaviour
 
     private void Update()
     {
+        chunkMoveSpeed = gameSpeedManager.currentSpeed;
         foreach(GameObject chunk in chunks)
         {
             chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);

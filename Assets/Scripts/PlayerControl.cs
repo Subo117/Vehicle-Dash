@@ -37,7 +37,6 @@ public class PlayerControl : MonoBehaviour
             currentLane++;
             animator.Play("Turn Right", 0, 0f);
         }
-        Debug.Log(animator == null ? "Animator NOT found" : "Animator FOUND");
 
 
         Vector3 targetPos = new Vector3(currentLane * laneDistance, playerModel.transform.position.y, playerModel.transform.position.z);

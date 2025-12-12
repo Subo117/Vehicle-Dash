@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class ObstacleGanerator : MonoBehaviour
 {
-    [SerializeField] float timer = 2;
     [SerializeField] List<GameObject> obstacles = new List<GameObject>();
     [SerializeField] Transform obstacleParent;
-    
+
+    GameSpeedManager gameSpeedManager;
+
+    float oneObstacleInThisSec;
 
     float[] Lanes = {-15f, 0f, 15f};
 
     float currTime = 0f;
 
+    private void Awake()
+    {
+        gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
+    }
 
+    private void Start()
+    {
+    }
     private void Update()
     {
+        HandleObstacleSpawning();
+    }
+
+    void HandleObstacleSpawning()
+    {
+        oneObstacleInThisSec = gameSpeedManager.obstacleSpawnRate;
         currTime += Time.deltaTime;
-        if(currTime > timer)
+        if(currTime > oneObstacleInThisSec)
         {
             SpawnObstacle();
             currTime = 0f;
         }
+
     }
 
     void SpawnObstacle()
