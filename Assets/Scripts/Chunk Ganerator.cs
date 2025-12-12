@@ -71,6 +71,11 @@ public class ChunkGanerator : MonoBehaviour
         foreach(GameObject chunk in tempChunks)
         {
             chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+            if(chunk.transform.position.z < minChunkRangeOfZ)
+            {
+                tempChunks.Remove(chunk);
+                Destroy(chunk);
+            }
 
         }
     }
