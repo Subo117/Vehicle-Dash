@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class GameSpeedManager : MonoBehaviour
 {
     [SerializeField] float maxSpeed = 200f;
-    [SerializeField] float secondsForSpeedBoost = 5f;
+    [SerializeField] float secondsForSpeedBoost = 2f;
 
     InputAction accelarate;
 
@@ -21,7 +21,7 @@ public class GameSpeedManager : MonoBehaviour
     private void Update()
     {
         HandleLinearSpeedIncrement();
-        //Debug.Log(currentSpeed);
+        Debug.Log(currentSpeed);
         if (accelarate.IsPressed())
         {
             Debug.Log("pressed");

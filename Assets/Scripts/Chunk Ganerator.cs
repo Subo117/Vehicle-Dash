@@ -34,36 +34,43 @@ public class ChunkGanerator : MonoBehaviour
     private void Start()
     {
         GenerateChunk();
+
     }
 
     private void Update()
     {
         chunkMoveSpeed = gameSpeedManager.currentSpeed;
-        ManageChunk();
 
-        for(int i = 0; i < chunks.Count; i++)
+        for(int i = 0; i < obstaclesCollection.Count; i++)
         {
             
             GameObject chunk = chunks[i];
             chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+
             GameObject obstacle = obstaclesCollection[i];
             obstacle.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
         }
 
+        ManageChunk();
         
     }
 
     void GenerateChunk()
     {
-        for(int road = 0; road < noOfRoads; road++)
+        for(int i = 0; i < 4; i++)
         {
-            GameObject chunk =  Instantiate(RoadPrefab, new Vector3(transform.position.x, transform.position.y, road * chunkDist), Quaternion.identity, chunkParent);
+            GameObject chunk =  Instantiate(RoadPrefab, new Vector3(transform.position.x, transform.position.y, i * chunkDist), Quaternion.identity, chunkParent);
+
+        }
+        for (int road = 0; road < noOfRoads; road++)
+        {
+            GameObject chunk =  Instantiate(RoadPrefab, new Vector3(transform.position.x, transform.position.y, road * chunkDist + 4 * chunkDist), Quaternion.identity, chunkParent);
             chunks.Add(chunk);
 
             GameObject selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
             float selectedLane = Lanes[Random.Range(0, Lanes.Length)];
 
-            GameObject obstacle = Instantiate(selectedObstacle, new Vector3(selectedLane, transform.position.y, road * chunkDist), Quaternion.identity, obstacleParent);
+            GameObject obstacle = Instantiate(selectedObstacle, new Vector3(selectedLane, transform.position.y, road * chunkDist + 4 * chunkDist), Quaternion.identity, obstacleParent);
             obstaclesCollection.Add(obstacle);
 
         }
@@ -71,7 +78,8 @@ public class ChunkGanerator : MonoBehaviour
 
     void ManageChunk()
     {
-        if(chunks.Count > 0 && obstaclesCollection.Count > 0)
+
+        if (chunks.Count > 0 && obstaclesCollection.Count > 0)
         {
             GameObject firstChunk = chunks[0];
             GameObject firstObstacle = obstaclesCollection[0];
