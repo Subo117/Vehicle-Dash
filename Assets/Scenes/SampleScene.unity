@@ -522,17 +522,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c850a11f90dce64ebd4ada485faa69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoadPrefab: {fileID: 6821089258567855431, guid: f02b8b9ed1e282142b70f05d595b25c1, type: 3}
-  obstacleSpawnPos: {fileID: 429211760}
+  roadPrefab: {fileID: 1372753237658102494, guid: f02b8b9ed1e282142b70f05d595b25c1, type: 3}
+  tempRoadPrefab: {fileID: 1372753237658102494, guid: d77aeaaa1d21bc34cbbcbc5b60153c3a, type: 3}
   chunkParent: {fileID: 1914997856}
-  obstacleParent: {fileID: 295468093}
   noOfRoads: 20
   chunkDist: 30
   minChunkRangeOfZ: -100
   chunkMoveSpeed: 0
-  obstacles:
-  - {fileID: 554934183799534611, guid: 6eef2d0ad0f206a41b7cbf3f3c4bc372, type: 3}
-  - {fileID: 4033603183312779342, guid: bac1450b1839c2d4580ff4572d4972e7, type: 3}
 --- !u!4 &1133473958
 Transform:
   m_ObjectHideFlags: 0
