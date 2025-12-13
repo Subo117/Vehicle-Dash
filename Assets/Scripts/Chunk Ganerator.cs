@@ -68,10 +68,16 @@ public class ChunkGanerator : MonoBehaviour
     }
     void MoveTempChunk()
     {
-        foreach(GameObject chunk in tempChunks)
+        for (int i = tempChunks.Count - 1; i >= 0; i--)
         {
+            GameObject chunk = tempChunks[i];
             chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
 
+            if (chunk.transform.position.z < minChunkRangeOfZ)
+            {
+                tempChunks.RemoveAt(i);
+                Destroy(chunk);
+            }
         }
     }
 
