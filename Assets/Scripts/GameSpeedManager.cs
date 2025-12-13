@@ -21,10 +21,8 @@ public class GameSpeedManager : MonoBehaviour
     private void Update()
     {
         HandleLinearSpeedIncrement();
-        Debug.Log(currentSpeed);
         if (accelarate.IsPressed())
         {
-            Debug.Log("pressed");
             if (currentSpeed > maxSpeed) return;
             currentSpeed += Time.deltaTime * 10;
             

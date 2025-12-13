@@ -5,7 +5,7 @@ public class ObstacleGenerator : MonoBehaviour
 {
     [SerializeField] GameObject coinPrefab;
 
-    [SerializeField] float coinSpawnChance = 0.8f;
+    [SerializeField] float coinSpawnChance = 0.6f;
 
     [SerializeField] List<GameObject> obstacles = new List<GameObject>();
 
@@ -16,6 +16,7 @@ public class ObstacleGenerator : MonoBehaviour
     private void Start()
     {
         SpawnFence();
+        SpawnCoin();
     }
     void SpawnFence()
     {
