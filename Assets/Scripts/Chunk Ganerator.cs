@@ -21,6 +21,10 @@ public class ChunkGanerator : MonoBehaviour
 
     GameSpeedManager gameSpeedManager;
 
+    float[] lanes = { -15f, 0f, 15f };
+
+    int initialRoadCnt = 0;
+
     private void Awake()
     {
         gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
