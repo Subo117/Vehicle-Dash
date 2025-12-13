@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
 {
+    [SerializeField] GameObject coinPrefab;
+
+    [SerializeField] float coinSpawnChance = 0.7f;
+
     [SerializeField] List<GameObject> obstacles = new List<GameObject>();
 
     List<int> availableLanes = new List<int> { 0, 1, 2 };
@@ -12,6 +16,7 @@ public class ObstacleGenerator : MonoBehaviour
     private void Start()
     {
         SpawnFence();
+        SpawnCoin();
     }
     void SpawnFence()
     {
@@ -19,9 +24,22 @@ public class ObstacleGenerator : MonoBehaviour
         int selectedLane = SelectLane();
 
         GameObject selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
-        Vector3 fencePos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
-        Instantiate(selectedObstacle, fencePos, Quaternion.identity, this.transform);
+        Vector3 carPos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
+        Instantiate(selectedObstacle, carPos, Quaternion.identity, this.transform);
         
+
+    }
+
+    void SpawnCoin()
+    {
+        if (Random.value > coinSpawnChance) return;
+        if (availableLanes.Count == 0) return;
+        int selectedLane = SelectLane();
+
+        GameObject selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
+        Vector3 coinPos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
+        Instantiate(coinPrefab, coinPos, Quaternion.identity, this.transform);
+
 
     }
 
