@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class ChunkGanerator : MonoBehaviour
 {
-    [SerializeField] GameObject RoadPrefab;
+    [SerializeField] GameObject roadPrefab;
+    [SerializeField] GameObject tempRoadPrefab;
 
     [SerializeField] Transform chunkParent;
-    [SerializeField] Transform obstacleParent;
 
     [SerializeField] int noOfRoads = 15;
     [SerializeField] int chunkDist = 20;
     [SerializeField] float minChunkRangeOfZ = -100f;
     [SerializeField] float chunkMoveSpeed = 15f;
 
-    [SerializeField] List<GameObject> obstacles;
 
     List<GameObject> chunks = new List<GameObject>();
     List<GameObject> tempChunks = new List<GameObject>();
-    List<GameObject> obstaclesCollection = new List<GameObject>();
 
 
     GameSpeedManager gameSpeedManager;
 
-    List<int> availableLanes = new List<int>() { 0, 1, 2};
-    float[] Lanes = { -15f, 0f, 15f };
+    float[] lanes = { -15f, 0f, 15f };
 
     int initialRoadCnt = 0;
 
@@ -42,27 +39,21 @@ public class ChunkGanerator : MonoBehaviour
     {
         MoveTempChunk();
         MoveChunk();
-        ManageChunk();
-        
+
     }
 
     void GenerateChunk()
     {
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            GameObject chunk =  Instantiate(RoadPrefab, new Vector3(transform.position.x, transform.position.y, i * chunkDist), Quaternion.identity, chunkParent);
+            GameObject chunk = Instantiate(tempRoadPrefab, new Vector3(transform.position.x, transform.position.y, i * chunkDist), Quaternion.identity, chunkParent);
             tempChunks.Add(chunk);
         }
         for (int road = 0; road < noOfRoads; road++)
         {
-            GameObject chunk =  Instantiate(RoadPrefab, new Vector3(transform.position.x, transform.position.y, road * chunkDist + 4 * chunkDist), Quaternion.identity, chunkParent);
-            chunks.Add(chunk);
-
-            GameObject selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
-            float selectedLane = Lanes[Random.Range(0, Lanes.Length)];
-
-            GameObject obstacle = Instantiate(selectedObstacle, new Vector3(selectedLane, transform.position.y, road * chunkDist + 4 * chunkDist), Quaternion.identity, obstacleParent);
-            obstaclesCollection.Add(obstacle);
+            Vector3 chunkSpawnPos = transform.position + new Vector3(0, 0, road * chunkDist + 4 * chunkDist);
+            GameObject chunkGO = Instantiate(roadPrefab, chunkSpawnPos, Quaternion.identity, chunkParent);
+            chunks.Add(chunkGO);
 
         }
     }
@@ -72,11 +63,6 @@ public class ChunkGanerator : MonoBehaviour
         {
             GameObject chunk = tempChunks[i];
             chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
-            if(chunk.transform.position.z < minChunkRangeOfZ)
-            {
-                tempChunks.Remove(chunk);
-                Destroy(chunk);
-            }
 
             if (chunk.transform.position.z < minChunkRangeOfZ)
             {
@@ -85,67 +71,45 @@ public class ChunkGanerator : MonoBehaviour
             }
         }
     }
+
     void MoveChunk()
     {
         chunkMoveSpeed = gameSpeedManager.currentSpeed;
 
-        for (int i = 0; i < obstaclesCollection.Count; i++)
+        for (int i = 0; i < chunks.Count; i++)
         {
 
             GameObject chunk = chunks[i];
             chunk.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
 
-            GameObject obstacle = obstaclesCollection[i];
-            obstacle.transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+            DestroyChunk(chunk);
+
         }
     }
-    void ManageChunk()
-    {
 
-        if (chunks.Count > 0 && obstaclesCollection.Count > 0)
+
+
+
+    void DestroyChunk(GameObject firstChunk)
+    {
+        if (firstChunk.transform.position.z < minChunkRangeOfZ)
         {
-            GameObject firstChunk = chunks[0];
-            GameObject firstObstacle = obstaclesCollection[0];
-
-            if (firstChunk.transform.position.z < minChunkRangeOfZ)
-            {
-                DestroyChunk(firstChunk, firstObstacle);
-            }
-            
+            chunks.Remove(firstChunk);
+            Destroy(firstChunk);
+            SpawnNewChunk();
         }
-    }
-    void DestroyChunk(GameObject firstChunk, GameObject firstObstacle)
-    {
-        chunks.Remove(firstChunk);
-        Destroy(firstChunk);
 
-        obstaclesCollection.Remove(firstObstacle);
-        Destroy(firstObstacle);
-        
-        SpawnNewChunk();
     }
+
     void SpawnNewChunk()
     {
-        float newZ = chunks[chunks.Count - 1].transform.position.z + chunkDist;
-        Vector3 chunkSpawnPos = new Vector3(0, 0, newZ);
-        GameObject newChunk = Instantiate(RoadPrefab, chunkSpawnPos, Quaternion.identity, chunkParent);
+        Vector3 chunkSpawnPos = chunks[chunks.Count - 1].transform.position + new Vector3(0, 0, chunkDist);
+        GameObject newChunk = Instantiate(roadPrefab, chunkSpawnPos, Quaternion.identity, chunkParent);
         chunks.Add(newChunk);
 
-        GameObject selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
-        //float selectedLane = Lanes[Random.Range(0, Lanes.Length)];
-        int selectedLane = SelectLane();
-
-        GameObject obstacle = Instantiate(selectedObstacle, new Vector3(Lanes[selectedLane], chunkSpawnPos.y, chunkSpawnPos.z), Quaternion.identity, obstacleParent);
-        obstaclesCollection.Add(obstacle);
-
     }
 
-    int SelectLane()
-    {
-        int randomLaneIndex = Random.Range(0, availableLanes.Count);
-        int selectedLane = availableLanes[randomLaneIndex];
-        availableLanes.RemoveAt(randomLaneIndex);
-        return selectedLane;
-    }
+
+
 
 }
