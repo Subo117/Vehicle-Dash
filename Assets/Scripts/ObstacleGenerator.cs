@@ -7,8 +7,11 @@ public class ObstacleGenerator : MonoBehaviour
 
     [SerializeField] float coinSpawnChance = 0.6f;
     [SerializeField] float carSpawnChance = 0.8f;
+    [SerializeField] float boostSpawnChance = 0.1f;
 
-    [SerializeField] List<GameObject> obstacles = new List<GameObject>();
+
+    [SerializeField] List<GameObject> obstacles;
+    [SerializeField] List<GameObject> boosts;
 
     List<int> availableLanes = new List<int> { 0, 1, 2 };
     float[] lanes = { -15f, 0f, 15f };
@@ -18,6 +21,7 @@ public class ObstacleGenerator : MonoBehaviour
     {
         SpawnCar();
         SpawnCoin();
+        SpawnBoost();
     }
     void SpawnCar()
     {
@@ -43,6 +47,17 @@ public class ObstacleGenerator : MonoBehaviour
         Instantiate(coinPrefab, coinPos, Quaternion.identity, this.transform);
 
 
+    }
+
+    void SpawnBoost()
+    {
+        if (Random.value > boostSpawnChance) return;
+        if (availableLanes.Count == 0) return;
+        int selectedLane = SelectLane();
+
+        GameObject selectedBoost = boosts[Random.Range(0, boosts.Count)];
+        Vector3 boostPos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
+        Instantiate(selectedBoost, boostPos, Quaternion.identity, this.transform);
     }
 
     int SelectLane()
