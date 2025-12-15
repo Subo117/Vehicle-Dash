@@ -1,14 +1,28 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Coin : Pickup
+public class Coin : MonoBehaviour
 {
     ScoreManager scoreManager;
+    CoinMove coinMove;
     private void Awake()
     {
         scoreManager = FindAnyObjectByType<ScoreManager>();
+        coinMove = GetComponent<CoinMove>();
+
     }
-    protected override void OnPickup()
+    private void OnTriggerEnter(Collider other)
     {
-        scoreManager.IncreaseScore();
+        if (other.CompareTag("CoinCollector"))
+        {
+            coinMove.MoveCoin(true);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            scoreManager.IncreaseScore();
+            Destroy(gameObject);
+        }
+
+
     }
 }
