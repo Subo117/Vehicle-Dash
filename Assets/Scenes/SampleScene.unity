@@ -546,7 +546,7 @@ MonoBehaviour:
   tempRoadPrefab: {fileID: 1372753237658102494, guid: d77aeaaa1d21bc34cbbcbc5b60153c3a, type: 3}
   chunkParent: {fileID: 1914997856}
   noOfRoads: 20
-  chunkDist: 30
+  chunkDist: 40
   minChunkRangeOfZ: -100
   chunkMoveSpeed: 0
 --- !u!4 &1133473958
