@@ -6,6 +6,7 @@ public class ObstacleGenerator : MonoBehaviour
     [SerializeField] GameObject coinPrefab;
 
     [SerializeField] float coinSpawnChance = 0.6f;
+    [SerializeField] float carSpawnChance = 0.8f;
 
     [SerializeField] List<GameObject> obstacles = new List<GameObject>();
 
@@ -15,11 +16,12 @@ public class ObstacleGenerator : MonoBehaviour
 
     private void Start()
     {
-        SpawnFence();
+        SpawnCar();
         SpawnCoin();
     }
-    void SpawnFence()
+    void SpawnCar()
     {
+        if (Random.value > carSpawnChance) return;
         if (availableLanes.Count == 0) return;
         int selectedLane = SelectLane();
 

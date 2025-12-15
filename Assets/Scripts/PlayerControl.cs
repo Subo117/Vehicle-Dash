@@ -27,13 +27,13 @@ public class PlayerControl : MonoBehaviour
         if (left.WasPressedThisFrame() && (currentLane > -1))
         {
             currentLane--;
-            animator.Play("Turn Left", 0, 0f);
+            animator.Play("Left", 0, 0f);
         }
 
         if (right.WasPressedThisFrame() && currentLane < 1)
         {
             currentLane++;
-            animator.Play("Turn Right", 0, 0f);
+            animator.Play("Right", 0, 0f);
         }
 
 
