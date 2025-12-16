@@ -31,7 +31,7 @@ public class GameSpeedManager : MonoBehaviour
             if(currentSpeed <= baseSpeed) return;
             currentSpeed -= Time.deltaTime * 10;
         }
-        Debug.Log(currentSpeed);
+        //Debug.Log(currentSpeed);
     }
 
     void HandleLinearSpeedIncrement()

@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     Animator animator;
     float laneDistance = 15f;
     int currentLane = 0;
+    public bool isMovable = true;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class PlayerControl : MonoBehaviour
     
     private void Update()
     {
+        if (!isMovable) return;
+       
         if (left.WasPressedThisFrame() && (currentLane > -1))
         {
             currentLane--;

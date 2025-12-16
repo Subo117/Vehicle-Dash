@@ -20,12 +20,14 @@ public class ChunkGanerator : MonoBehaviour
 
 
     GameSpeedManager gameSpeedManager;
+    PlayerCollision playerCollision;
 
     float[] lanes = { -15f, 0f, 15f };
 
     private void Awake()
     {
         gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
+        playerCollision = FindFirstObjectByType<PlayerCollision>();
     }
     private void Start()
     {
@@ -35,6 +37,7 @@ public class ChunkGanerator : MonoBehaviour
 
     private void Update()
     {
+        if (playerCollision.IsCrashed()) return;
         MoveTempChunk();
         MoveChunk();
 
