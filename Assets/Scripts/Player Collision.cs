@@ -13,9 +13,12 @@ public class PlayerCollision : MonoBehaviour
 
     public bool isCrashed = false;
     bool isShieldActive = false;
+    bool isTwiceCoinActive = false;
 
     Coroutine shieldCoroutine;
     Coroutine magnetCoroutine;
+    Coroutine twiceCoinCoroutine;
+
     private void Start()
     {
         playerControl = GetComponentInParent<PlayerControl>();
@@ -50,7 +53,9 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Coin"))
         {
-            scoreManager.IncreaseScore();
+            if (isTwiceCoinActive) scoreManager.IncreaseScore(2);
+            else scoreManager.IncreaseScore(1);
+
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Magnet"))
@@ -63,6 +68,14 @@ public class PlayerCollision : MonoBehaviour
             magnetCoroutine = StartCoroutine(MagnetRoutine());
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("TwiceCoin"))
+        {
+            if(twiceCoinCoroutine != null)
+            {
+                StopCoroutine (twiceCoinCoroutine);
+            }
+            twiceCoinCoroutine = StartCoroutine(TwiceCoinCoroutine(collision));
+        }
     }
 
     IEnumerator ShieldCoroutine(Collision collision)
@@ -71,6 +84,14 @@ public class PlayerCollision : MonoBehaviour
         Destroy(collision.gameObject);
         yield return new WaitForSeconds(timeToWait);
         isShieldActive = false;
+    }
+
+    IEnumerator TwiceCoinCoroutine(Collision collision)
+    {
+        isTwiceCoinActive = true;
+        Destroy(collision.gameObject);
+        yield return new WaitForSeconds(timeToWait);
+        isTwiceCoinActive = false;
     }
 
     IEnumerator MagnetRoutine()

@@ -4,9 +4,9 @@ public class ScoreManager : MonoBehaviour
 {
     long Score = 0;
 
-    public void IncreaseScore()
+    public void IncreaseScore(int scoreToIncrease)
     {
-        Score++;
+        Score += scoreToIncrease;
         Debug.Log(Score);
     }
 }

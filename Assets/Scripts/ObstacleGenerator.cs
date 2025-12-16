@@ -7,7 +7,7 @@ public class ObstacleGenerator : MonoBehaviour
 
     [SerializeField] float coinSpawnChance = 0.6f;
     [SerializeField] float carSpawnChance = 0.8f;
-    [SerializeField] float boostSpawnChance = 0.05f;
+    [SerializeField] float boostSpawnChance = 0.5f;
 
 
     [SerializeField] List<GameObject> obstacles;
