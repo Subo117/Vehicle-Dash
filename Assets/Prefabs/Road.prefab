@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 4033603183312779342, guid: bac1450b1839c2d4580ff4572d4972e7, type: 3}
   boosts:
   - {fileID: 5245603606814652199, guid: 74971266b60510a42bf870993e9896a2, type: 3}
+  - {fileID: 5245603606814652199, guid: 51fcd39a5b8613f41b705d87c0c06d72, type: 3}
 --- !u!1 &1815811788498055377
 GameObject:
   m_ObjectHideFlags: 0

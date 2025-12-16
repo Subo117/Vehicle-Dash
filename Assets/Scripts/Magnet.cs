@@ -11,7 +11,6 @@ public class Magnet : MonoBehaviour
         if(magnetCoroutine != null)
         {
             StopCoroutine(magnetCoroutine);
-            Debug.Log("Started Again");
         }
         magnetCoroutine = StartCoroutine(MagnetRoutine(secToWait));
     }

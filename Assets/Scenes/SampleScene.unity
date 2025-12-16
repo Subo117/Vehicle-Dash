@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f940a48883803e54c8da7b0278625372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToWait: 10
+  isCrashed: 0
 --- !u!54 &131823207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -693,9 +695,10 @@ GameObject:
   - component: {fileID: 1395235153}
   - component: {fileID: 1395235152}
   - component: {fileID: 1395235151}
+  - component: {fileID: 1395235154}
   m_Layer: 0
   m_Name: Coin Collector
-  m_TagString: CoinCollector
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -730,7 +733,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -789,6 +792,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395235149}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1395235154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395235149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7e27dd2e8da1346abdea2d858b7136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1403647543
 GameObject:
   m_ObjectHideFlags: 0

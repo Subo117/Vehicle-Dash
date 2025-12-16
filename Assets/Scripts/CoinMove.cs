@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CoinMove : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 500f;
+    [SerializeField] float moveSpeed = 300f;
 
     Transform playerPos;
 

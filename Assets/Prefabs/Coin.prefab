@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 4834325466539313168}
   - component: {fileID: 4370537361060547177}
   - component: {fileID: 1253382603618937406}
-  - component: {fileID: 550649285870194845}
   - component: {fileID: 3729040253735453704}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +104,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -134,22 +133,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!114 &550649285870194845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66388775242261844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 875ed1a22b3459b4f8c6dadae38b3916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3729040253735453704
 MonoBehaviour:
   m_ObjectHideFlags: 0

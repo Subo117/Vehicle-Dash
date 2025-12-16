@@ -4,14 +4,20 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] float timeToWait = 10f;
+
+    PlayerControl playerControl;
+    ScoreManager scoreManager;
+    CoinMove coinMove;
+
+
     public bool isCrashed = false;
     bool isShieldActive = false;
-    PlayerControl playerControl;
 
     Coroutine shieldCoroutine;
     private void Start()
     {
         playerControl = GetComponentInParent<PlayerControl>();
+        scoreManager = FindAnyObjectByType<ScoreManager>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -38,6 +44,11 @@ public class PlayerCollision : MonoBehaviour
                 StopCoroutine(shieldCoroutine);
             }
             shieldCoroutine =  StartCoroutine(ShieldCoroutine(collision));
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            scoreManager.IncreaseScore();
+            Destroy(collision.gameObject);
         }
     }
 

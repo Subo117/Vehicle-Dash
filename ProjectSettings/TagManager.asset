@@ -7,6 +7,8 @@ TagManager:
   - CoinCollector
   - Car
   - Shield
+  - TwiceCoin
+  - Coin
   layers:
   - Default
   - TransparentFX
