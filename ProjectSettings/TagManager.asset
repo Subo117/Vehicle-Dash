@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CoinCollector
   - Car
+  - Shield
   layers:
   - Default
   - TransparentFX
