@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - CoinCollector
   - Car
   - Shield
   - TwiceCoin
   - Coin
+  - Magnet
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] float timeToWait = 10f;
+    [SerializeField] GameObject coinCollector;
 
     PlayerControl playerControl;
     ScoreManager scoreManager;
@@ -14,6 +15,7 @@ public class PlayerCollision : MonoBehaviour
     bool isShieldActive = false;
 
     Coroutine shieldCoroutine;
+    Coroutine magnetCoroutine;
     private void Start()
     {
         playerControl = GetComponentInParent<PlayerControl>();
@@ -36,18 +38,29 @@ public class PlayerCollision : MonoBehaviour
 
             }
         }
-        if (collision.gameObject.CompareTag("Shield"))
+        else if (collision.gameObject.CompareTag("Shield"))
         {
             Debug.Log("Shield collider");
+            Debug.Log(collision.gameObject.name);
             if(shieldCoroutine != null)
             {
                 StopCoroutine(shieldCoroutine);
             }
             shieldCoroutine =  StartCoroutine(ShieldCoroutine(collision));
         }
-        if (collision.gameObject.CompareTag("Coin"))
+        else if (collision.gameObject.CompareTag("Coin"))
         {
             scoreManager.IncreaseScore();
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Magnet"))
+        {
+            Debug.Log("magnet collider");
+            if (magnetCoroutine != null)
+            {
+                StopCoroutine(magnetCoroutine);
+            }
+            magnetCoroutine = StartCoroutine(MagnetRoutine());
             Destroy(collision.gameObject);
         }
     }
@@ -58,6 +71,16 @@ public class PlayerCollision : MonoBehaviour
         Destroy(collision.gameObject);
         yield return new WaitForSeconds(timeToWait);
         isShieldActive = false;
+    }
+
+    IEnumerator MagnetRoutine()
+    {
+        coinCollector.SetActive(true);
+        Debug.Log("Enabled");
+        yield return new WaitForSeconds(timeToWait);
+        coinCollector.SetActive(false);
+        Debug.Log("Disabled");
+
     }
 
 }

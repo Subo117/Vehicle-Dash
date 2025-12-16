@@ -37,12 +37,12 @@ public class ChunkGanerator : MonoBehaviour
 
     private void Update()
     {
+
+        if (playerCollision.isCrashed) return;
         
-        if (!playerCollision.isCrashed)
-        {
-            MoveTempChunk();
-            MoveChunk();
-        }
+        MoveTempChunk();
+        MoveChunk();
+        
 
     }
 
