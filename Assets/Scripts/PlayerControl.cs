@@ -17,9 +17,10 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         left = InputSystem.actions.FindAction("Left");
         right = InputSystem.actions.FindAction("Right");
+
 
     }
     
@@ -42,10 +43,7 @@ public class PlayerControl : MonoBehaviour
 
         Vector3 targetPos = new Vector3(currentLane * laneDistance, playerModel.transform.position.y, playerModel.transform.position.z);
 
-        playerModel.transform.position = Vector3.MoveTowards(
-            playerModel.transform.position,
-            targetPos,
-            moveSpeed * Time.deltaTime
+        playerModel.transform.position = Vector3.MoveTowards(playerModel.transform.position, targetPos, moveSpeed * Time.deltaTime
         );
     }
 
