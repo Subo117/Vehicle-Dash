@@ -10,7 +10,6 @@ public class GameSpeedManager : MonoBehaviour
 
     public float baseSpeed = 15f;
     public float currentSpeed = 15f;
-    public bool isAccelerating;
     float timer = 0f;
 
     private void Awake()
@@ -26,13 +25,11 @@ public class GameSpeedManager : MonoBehaviour
         {
             if (currentSpeed > maxSpeed) return;
             currentSpeed += Time.deltaTime * 5;
-            isAccelerating = true;
         }
         else
         {
             if(currentSpeed <= baseSpeed) return;
             currentSpeed -= Time.deltaTime * 5;
-            isAccelerating = false;
         }
         //Debug.Log(currentSpeed);
     }

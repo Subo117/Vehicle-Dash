@@ -33,7 +33,7 @@ public class CarAbility : MonoBehaviour
             isActive = false;
         }
 
-        if (gameSpeedManager.isAccelerating)
+        if (!isActive)
         {
             timer += Time.deltaTime;
             if(timer >= cooldown)
@@ -43,10 +43,7 @@ public class CarAbility : MonoBehaviour
                 timer = 0;
             }
         }
-        else
-        {
-            timer -= Time.deltaTime;
-        }
+
     }
 
     IEnumerator AbilityCoroutine()

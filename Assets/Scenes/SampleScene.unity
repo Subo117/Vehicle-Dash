@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 60
-  nitroSpeed: 350
+  nitroSpeed: 400
   nitroTime: 3
 --- !u!1 &1914997855
 GameObject:
@@ -873,7 +873,6 @@ MonoBehaviour:
   secondsForSpeedBoost: 2
   baseSpeed: 15
   currentSpeed: 15
-  isAccelerating: 0
 --- !u!4 &2005191736
 Transform:
   m_ObjectHideFlags: 0
