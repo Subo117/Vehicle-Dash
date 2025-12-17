@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 10
-  coinCollector: {fileID: 0}
+  coinCollector: {fileID: 4106672735571697223, guid: fba52a9e1ca33e54eb71cba73ef3a068, type: 3}
   isCrashed: 0
 --- !u!1 &7392865019564662494
 GameObject:

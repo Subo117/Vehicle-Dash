@@ -12,7 +12,7 @@ public class PlayerCollision : MonoBehaviour
 
 
     public bool isCrashed = false;
-    bool isShieldActive = false;
+    public bool isShieldActive = false;
     bool isTwiceCoinActive = false;
 
     Coroutine shieldCoroutine;
@@ -43,8 +43,6 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
-            Debug.Log("Shield collider");
-            Debug.Log(collision.gameObject.name);
             if(shieldCoroutine != null)
             {
                 StopCoroutine(shieldCoroutine);
@@ -60,7 +58,6 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Magnet"))
         {
-            Debug.Log("magnet collider");
             if (magnetCoroutine != null)
             {
                 StopCoroutine(magnetCoroutine);
@@ -97,10 +94,8 @@ public class PlayerCollision : MonoBehaviour
     IEnumerator MagnetRoutine()
     {
         coinCollector.SetActive(true);
-        Debug.Log("Enabled");
         yield return new WaitForSeconds(timeToWait);
         coinCollector.SetActive(false);
-        Debug.Log("Disabled");
 
     }
 
