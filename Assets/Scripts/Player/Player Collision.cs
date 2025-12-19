@@ -8,8 +8,7 @@ public class PlayerCollision : MonoBehaviour
     CoinCollector collector;
     PlayerControl playerControl;
     ScoreManager scoreManager;
-    CoinMove coinMove;
-
+    JeepAbility jeep;
 
     public bool isCrashed = false;
     public bool isShieldActive = false;
@@ -25,6 +24,9 @@ public class PlayerCollision : MonoBehaviour
         scoreManager = FindAnyObjectByType<ScoreManager>();
         collector = FindAnyObjectByType<CoinCollector>();
         collector.gameObject.SetActive(false);
+
+        jeep = FindAnyObjectByType<JeepAbility>();
+        Debug.Log((jeep != null) ? "Found" : "Not Dound");
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -45,6 +47,7 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
+            if (jeep != null && jeep.isActive) return;
             if(shieldCoroutine != null)
             {
                 StopCoroutine(shieldCoroutine);

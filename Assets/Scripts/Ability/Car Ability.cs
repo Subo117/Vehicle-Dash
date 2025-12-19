@@ -11,6 +11,8 @@ public class CarAbility : MonoBehaviour
     [SerializeField] float nitroSpeed = 350f;
     [SerializeField] float nitroTime = 5f;
 
+    InputAction ability;
+
     PlayerCollision playerCollision;
 
     bool isActive = true;
@@ -22,11 +24,12 @@ public class CarAbility : MonoBehaviour
     {
         gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
         playerCollision = GetComponentInChildren<PlayerCollision>();
+        ability = InputSystem.actions.FindAction("Ability");
     }
 
     private void Update()
     {
-        if (isActive && Keyboard.current.qKey.wasPressedThisFrame)
+        if (isActive && ability.WasPressedThisFrame())
         {
             Debug.Log("Ability Used");
             StartCoroutine(AbilityCoroutine());
