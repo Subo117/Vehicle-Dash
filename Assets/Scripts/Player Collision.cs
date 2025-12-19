@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] float timeToWait = 10f;
-    [SerializeField] GameObject coinCollector;
 
+    CoinCollector collector;
     PlayerControl playerControl;
     ScoreManager scoreManager;
     CoinMove coinMove;
@@ -23,6 +23,8 @@ public class PlayerCollision : MonoBehaviour
     {
         playerControl = GetComponentInParent<PlayerControl>();
         scoreManager = FindAnyObjectByType<ScoreManager>();
+        collector = FindAnyObjectByType<CoinCollector>();
+        collector.gameObject.SetActive(false);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -93,9 +95,9 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator MagnetRoutine()
     {
-        coinCollector.SetActive(true);
+        collector.gameObject.SetActive(true);
         yield return new WaitForSeconds(timeToWait);
-        coinCollector.SetActive(false);
+        collector.gameObject.SetActive(false);
 
     }
 
