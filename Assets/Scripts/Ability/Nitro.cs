@@ -1,50 +1,31 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CarAbility : MonoBehaviour
+public class Nitro : MonoBehaviour
 {
-    GameSpeedManager gameSpeedManager;
-
-    [SerializeField] float cooldown = 10f;
     [SerializeField] float nitroSpeed = 350f;
-    [SerializeField] float nitroTime = 5f;
+    [SerializeField] float nitroTime = 3f;
 
     InputAction ability;
+    GameSpeedManager gameSpeedManager;
 
     PlayerCollision playerCollision;
 
-    bool isActive = true;
-
-    float timer = 0;
-
-
-    private void Awake()
+    void Awake()
     {
         gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
         playerCollision = GetComponentInChildren<PlayerCollision>();
         ability = InputSystem.actions.FindAction("Ability");
     }
 
-    private void Update()
+    void Update()
     {
-        if (isActive && ability.WasPressedThisFrame())
+        if (playerCollision.isNitroActive && ability.WasPressedThisFrame())
         {
             Debug.Log("Ability Used");
             StartCoroutine(AbilityCoroutine());
-            isActive = false;
-        }
-
-        if (!isActive)
-        {
-            timer += Time.deltaTime;
-            if(timer >= cooldown)
-            {
-                Debug.Log("Ability Regained");
-                isActive = true;
-                timer = 0;
-            }
+            playerCollision.isNitroActive = false;
         }
 
     }

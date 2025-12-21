@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 868766355762308798}
   - component: {fileID: 5298499584570167187}
-  - component: {fileID: 3703912624201229970}
+  - component: {fileID: 5759928838574293447}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -56,7 +56,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3703912624201229970
+--- !u!114 &5759928838574293447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,11 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3591747369275986997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01874d09fc8b7fd4580034bb3179b2c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 65c0ddbae6cd6fb4394a652273817113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 60
-  nitroSpeed: 400
+  nitroSpeed: 350
   nitroTime: 3
 --- !u!1 &4518893726579059769
 GameObject:
@@ -167,9 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 10
-  coinCollector: {fileID: 9084337094400860982, guid: fba52a9e1ca33e54eb71cba73ef3a068, type: 3}
   isCrashed: 0
   isShieldActive: 0
+  isNitroActive: 0
 --- !u!1 &7392865019564662494
 GameObject:
   m_ObjectHideFlags: 0

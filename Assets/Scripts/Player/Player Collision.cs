@@ -12,6 +12,8 @@ public class PlayerCollision : MonoBehaviour
 
     public bool isCrashed = false;
     public bool isShieldActive = false;
+    public bool isNitroActive = false;
+  
     bool isTwiceCoinActive = false;
 
     Coroutine shieldCoroutine;
@@ -26,7 +28,6 @@ public class PlayerCollision : MonoBehaviour
         collector.gameObject.SetActive(false);
 
         jeep = FindAnyObjectByType<JeepAbility>();
-        Debug.Log((jeep != null) ? "Found" : "Not Dound");
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -77,6 +78,12 @@ public class PlayerCollision : MonoBehaviour
                 StopCoroutine (twiceCoinCoroutine);
             }
             twiceCoinCoroutine = StartCoroutine(TwiceCoinCoroutine(collision));
+        }
+        else if (collision.gameObject.CompareTag("Nitro"))
+        {
+            Debug.Log("Collided");
+            isNitroActive = true;
+            Destroy(collision.gameObject);
         }
     }
 
