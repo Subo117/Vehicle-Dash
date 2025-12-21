@@ -13,6 +13,7 @@ public class PickupTools : MonoBehaviour
 
     PlayerCollision playerCollision;
 
+
     void Awake()
     {
         gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
@@ -22,23 +23,24 @@ public class PickupTools : MonoBehaviour
 
     void Update()
     {
-        if (playerCollision.isNitroActive && ability.WasPressedThisFrame())
+        if (playerCollision.isNitroPicked && ability.WasPressedThisFrame())
         {
             Debug.Log("Ability Used");
             StartCoroutine(NitroCoroutine());
-            playerCollision.isNitroActive = false;
+            playerCollision.isNitroPicked = false;
         }
-        if(playerCollision.isMissileActive && ability.WasPressedThisFrame())
+        if(playerCollision.isMissilePicked && ability.WasPressedThisFrame())
         {
             Debug.Log("Missle");
             Instantiate(missilePrefab, transform.position, Quaternion.identity, gameObject.transform);
-            playerCollision.isMissileActive = false;
+            playerCollision.isMissilePicked = false;
         }
 
     }
 
     IEnumerator NitroCoroutine()
     {
+        playerCollision.isNitroActive = true;
         float tempMaxSpeed = gameSpeedManager.maxSpeed;
         float tempCurrentSpeed = gameSpeedManager.currentSpeed;
         playerCollision.isShieldActive = true;
@@ -48,5 +50,6 @@ public class PickupTools : MonoBehaviour
         gameSpeedManager.maxSpeed = tempMaxSpeed;
         gameSpeedManager.currentSpeed = tempCurrentSpeed;
         playerCollision.isShieldActive = false;
+        playerCollision.isNitroActive = false;
     }
 }

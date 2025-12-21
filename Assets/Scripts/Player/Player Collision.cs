@@ -11,8 +11,9 @@ public class PlayerCollision : MonoBehaviour
 
     public bool isCrashed = false;
     public bool isShieldActive = false;
+    public bool isNitroPicked = false;
     public bool isNitroActive = false;
-    public bool isMissileActive = false;
+    public bool isMissilePicked = false;
     bool isTwiceCoinActive = false;
 
     Coroutine shieldCoroutine;
@@ -31,7 +32,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Car"))
         {
-            if(isShieldActive)
+            if (isShieldActive)
             {
                 isCrashed = false;
                 playerControl.isMovable = true;
@@ -46,12 +47,13 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
-            if (isShieldActive && isNitroActive) return;
-            if(shieldCoroutine != null)
+            if (isNitroActive) return;
+
+            if (shieldCoroutine != null)
             {
                 StopCoroutine(shieldCoroutine);
             }
-            shieldCoroutine =  StartCoroutine(ShieldCoroutine(collision));
+            shieldCoroutine = StartCoroutine(ShieldCoroutine(collision));
         }
         else if (collision.gameObject.CompareTag("Coin"))
         {
@@ -62,7 +64,8 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Magnet"))
         {
-            if (isShieldActive && isNitroActive) return;
+            if (isNitroActive) return;
+
             if (magnetCoroutine != null)
             {
                 StopCoroutine(magnetCoroutine);
@@ -72,24 +75,29 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("TwiceCoin"))
         {
-            if (isShieldActive && isNitroActive) return;
+            if(isNitroActive) return;
+
             if (twiceCoinCoroutine != null)
             {
-                StopCoroutine (twiceCoinCoroutine);
+                StopCoroutine(twiceCoinCoroutine);
             }
             twiceCoinCoroutine = StartCoroutine(TwiceCoinCoroutine(collision));
         }
         else if (collision.gameObject.CompareTag("Nitro"))
         {
-            if (isShieldActive && isNitroActive) return;
-            isNitroActive = true;
+            if(isNitroActive) return;
+
+            if (isNitroPicked || isMissilePicked) return;
+            isNitroPicked = true;
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Missile"))
         {
-            if (isShieldActive && isNitroActive) return;
+            if(isNitroActive) return;
+
+            if (isNitroPicked || isMissilePicked) return;
             Debug.Log("Collided");
-            isMissileActive = true;
+            isMissilePicked = true;
             Destroy(collision.gameObject);
         }
     }
