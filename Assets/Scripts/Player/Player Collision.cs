@@ -8,12 +8,11 @@ public class PlayerCollision : MonoBehaviour
     CoinCollector collector;
     PlayerControl playerControl;
     ScoreManager scoreManager;
-    JeepAbility jeep;
 
     public bool isCrashed = false;
     public bool isShieldActive = false;
     public bool isNitroActive = false;
-  
+    public bool isMissileActive = false;
     bool isTwiceCoinActive = false;
 
     Coroutine shieldCoroutine;
@@ -27,7 +26,6 @@ public class PlayerCollision : MonoBehaviour
         collector = FindAnyObjectByType<CoinCollector>();
         collector.gameObject.SetActive(false);
 
-        jeep = FindAnyObjectByType<JeepAbility>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -48,7 +46,7 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
-            if (jeep != null && jeep.isActive) return;
+            if (isShieldActive && isNitroActive) return;
             if(shieldCoroutine != null)
             {
                 StopCoroutine(shieldCoroutine);
@@ -64,6 +62,7 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Magnet"))
         {
+            if (isShieldActive && isNitroActive) return;
             if (magnetCoroutine != null)
             {
                 StopCoroutine(magnetCoroutine);
@@ -73,7 +72,8 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("TwiceCoin"))
         {
-            if(twiceCoinCoroutine != null)
+            if (isShieldActive && isNitroActive) return;
+            if (twiceCoinCoroutine != null)
             {
                 StopCoroutine (twiceCoinCoroutine);
             }
@@ -81,8 +81,15 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Nitro"))
         {
-            Debug.Log("Collided");
+            if (isShieldActive && isNitroActive) return;
             isNitroActive = true;
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Missile"))
+        {
+            if (isShieldActive && isNitroActive) return;
+            Debug.Log("Collided");
+            isMissileActive = true;
             Destroy(collision.gameObject);
         }
     }

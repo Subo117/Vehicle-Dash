@@ -2,8 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Nitro : MonoBehaviour
+public class PickupTools : MonoBehaviour
 {
+    [SerializeField] GameObject missilePrefab;
     [SerializeField] float nitroSpeed = 350f;
     [SerializeField] float nitroTime = 3f;
 
@@ -24,13 +25,19 @@ public class Nitro : MonoBehaviour
         if (playerCollision.isNitroActive && ability.WasPressedThisFrame())
         {
             Debug.Log("Ability Used");
-            StartCoroutine(AbilityCoroutine());
+            StartCoroutine(NitroCoroutine());
             playerCollision.isNitroActive = false;
+        }
+        if(playerCollision.isMissileActive && ability.WasPressedThisFrame())
+        {
+            Debug.Log("Missle");
+            Instantiate(missilePrefab, transform.position, Quaternion.identity, gameObject.transform);
+            playerCollision.isMissileActive = false;
         }
 
     }
 
-    IEnumerator AbilityCoroutine()
+    IEnumerator NitroCoroutine()
     {
         float tempMaxSpeed = gameSpeedManager.maxSpeed;
         float tempCurrentSpeed = gameSpeedManager.currentSpeed;

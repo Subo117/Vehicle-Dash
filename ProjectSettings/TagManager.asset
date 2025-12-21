@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Magnet
   - Nitro
+  - Missile
   layers:
   - Default
   - TransparentFX
