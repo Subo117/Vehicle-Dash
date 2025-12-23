@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 868766355762308798}
   - component: {fileID: 5298499584570167187}
-  - component: {fileID: 5759928838574293447}
+  - component: {fileID: 1363432808133324058}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -56,7 +56,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5759928838574293447
+--- !u!114 &1363432808133324058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,10 +65,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3591747369275986997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c0ddbae6cd6fb4394a652273817113, type: 3}
+  m_Script: {fileID: 11500000, guid: f39c91848a03eb24987203f76209d089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nitroSpeed: 350
+  missilePrefab: {fileID: 6827806979257325492, guid: 84883bee97b16114caba865bc059f2be, type: 3}
+  nitroSpeed: 300
   nitroTime: 3
 --- !u!1 &4518893726579059769
 GameObject:
@@ -168,7 +169,9 @@ MonoBehaviour:
   timeToWait: 10
   isCrashed: 0
   isShieldActive: 0
+  isNitroPicked: 0
   isNitroActive: 0
+  isMissilePicked: 0
 --- !u!1 &7392865019564662494
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,24 @@ using UnityEngine;
 
 public class ScrollbarManager : MonoBehaviour
 {
+    string selectedVehicle;
+
+    private void Awake()
+    {
+        selectedVehicle = "None";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+    }
     public void OnButton1()
     {
-        Debug.Log("1");
+        Debug.Log("Bike");
+        selectedVehicle = "Bike";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
     }
     public void OnButton2()
     {
-        Debug.Log("2");
+        Debug.Log("Car");
+        selectedVehicle = "Car";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
 
     }
     public void OnButton3()
