@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScrollbarManager : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class ScrollbarManager : MonoBehaviour
         Debug.Log("Bike");
         selectedVehicle = "Bike";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
     public void OnButton2()
     {
         Debug.Log("Car");
         selectedVehicle = "Car";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
 
     }
     public void OnButton3()
