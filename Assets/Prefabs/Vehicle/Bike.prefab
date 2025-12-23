@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958122338898602051}
   - component: {fileID: 4624118914887252122}
+  - component: {fileID: -9092472739402469057}
   m_Layer: 0
   m_Name: Bike
   m_TagString: Untagged
@@ -55,6 +56,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-9092472739402469057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264022244212337346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39c91848a03eb24987203f76209d089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missilePrefab: {fileID: 6827806979257325492, guid: 84883bee97b16114caba865bc059f2be, type: 3}
+  nitroSpeed: 350
+  nitroTime: 3
 --- !u!1 &4033386724918173079
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,9 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 10
-  coinCollector: {fileID: 9084337094400860982, guid: fba52a9e1ca33e54eb71cba73ef3a068, type: 3}
   isCrashed: 0
   isShieldActive: 0
+  isNitroPicked: 0
+  isNitroActive: 0
+  isMissilePicked: 0
 --- !u!1 &5518837279508578644
 GameObject:
   m_ObjectHideFlags: 0

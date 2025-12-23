@@ -10,7 +10,7 @@ public class CoinMove : MonoBehaviour
 
     private void Start()
     {
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        playerPos = FindAnyObjectByType<VehicleSelector>().transform;
     }
 
     void Update()

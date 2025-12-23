@@ -14,7 +14,7 @@ public class PickupTools : MonoBehaviour
     PlayerCollision playerCollision;
 
 
-    void Awake()
+    void Start()
     {
         gameSpeedManager = FindAnyObjectByType<GameSpeedManager>();
         playerCollision = GetComponentInChildren<PlayerCollision>();
