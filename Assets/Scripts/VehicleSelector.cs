@@ -3,7 +3,11 @@ using UnityEngine;
 public class VehicleSelector : MonoBehaviour
 {
     [SerializeField] GameObject bikePrefab;
-    [SerializeField] GameObject CarPrefab;
+    [SerializeField] GameObject carPrefab;
+    [SerializeField] GameObject jeepPrefab;
+    [SerializeField] GameObject miniVanPrefab;
+    [SerializeField] GameObject truckPrefab;
+    [SerializeField] GameObject tempoPrefab;
 
     private void Awake()
     {
@@ -14,7 +18,27 @@ public class VehicleSelector : MonoBehaviour
         }
         else if(selected == "Car")
         {
-            Instantiate(CarPrefab, transform.position, Quaternion.identity, transform);
+            Instantiate(carPrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if (selected == "Jeep")
+        {
+            Instantiate(jeepPrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if (selected == "Mini Van")
+        {
+            Instantiate(miniVanPrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if (selected == "Truck")
+        {
+            Instantiate(truckPrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if (selected == "Tempo")
+        {
+            Instantiate(tempoPrefab, transform.position, Quaternion.identity, transform);
 
         }
     }

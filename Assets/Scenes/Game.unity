@@ -422,7 +422,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bikePrefab: {fileID: 1264022244212337346, guid: 2afa0a656fa4ca544ac2aed8323f1f25, type: 3}
-  CarPrefab: {fileID: 3591747369275986997, guid: 46e05f5bae6a66f4592c9c9bc94f3741, type: 3}
+  carPrefab: {fileID: 3591747369275986997, guid: 46e05f5bae6a66f4592c9c9bc94f3741, type: 3}
+  jeepPrefab: {fileID: 3591747369275986997, guid: ebd0f5b2c3f1f094297af8943a615f08, type: 3}
+  miniVanPrefab: {fileID: 3591747369275986997, guid: 628dafc127ef38c4098e26962e72d333, type: 3}
+  truckPrefab: {fileID: 3591747369275986997, guid: 8012348764378954baeac36a6904e46e, type: 3}
+  tempoPrefab: {fileID: 3591747369275986997, guid: a1ee6c79ac2a6d843afac4007ce1083c, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

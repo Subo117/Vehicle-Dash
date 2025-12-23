@@ -29,22 +29,31 @@ public class ScrollbarManager : MonoBehaviour
     }
     public void OnButton3()
     {
-        Debug.Log("3");
+        Debug.Log("Jeep");
+        selectedVehicle = "Jeep";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
     public void OnButton4()
     {
-        Debug.Log("4");
-
+        Debug.Log("Mini Van");
+        selectedVehicle = "Mini Van";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void OnButton5()
     {
-        Debug.Log("5");
-
+        Debug.Log("Truck");
+        selectedVehicle = "Truck";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void OnButton6()
     {
-        Debug.Log("6");
-
+        Debug.Log("Tempo");
+        selectedVehicle = "Tempo";
+        PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
