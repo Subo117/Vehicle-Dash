@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     {
         coins += scoreToIncrease;
         Debug.Log(coins);
+        gameSaver.SaveCoins(coins);
     }
 
     private void OnApplicationQuit()
