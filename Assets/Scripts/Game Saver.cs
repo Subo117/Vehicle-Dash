@@ -22,7 +22,7 @@ public class GameSaver : MonoBehaviour
     }
 
     public long Coins { get; private set; }
-    0
+    
     public void SaveCoins(long coins)
     {
         EnsurePath();
