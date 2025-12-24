@@ -3,16 +3,30 @@ using UnityEngine;
 
 public class GameSaver : MonoBehaviour
 {
+    public static GameSaver Instance;
     string path;
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
         path = Application.persistentDataPath + "/PlayerData.json";
+
+        GetCoins();
+
     }
 
+    public long Coins { get; private set; }
+    0
     public void SaveCoins(long coins)
     {
         EnsurePath();
+        Coins = coins;
         PlayerData data = new PlayerData();
         data.coins = coins;
 
@@ -26,7 +40,8 @@ public class GameSaver : MonoBehaviour
 
         string json = File.ReadAllText(path);
         PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-        return data.coins;
+        Coins = data.coins;
+        return Coins;
     }
 
     void EnsurePath()
