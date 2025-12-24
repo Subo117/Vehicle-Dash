@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,12 +7,14 @@ public class ScrollbarManager : MonoBehaviour
 {
     string selectedVehicle;
 
+
     private void Awake()
     {
         selectedVehicle = "None";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
     }
-    public void OnButton1()
+
+    public void OnBike()
     {
         Debug.Log("Bike");
         selectedVehicle = "Bike";
@@ -18,7 +22,7 @@ public class ScrollbarManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
-    public void OnButton2()
+    public void OnCar()
     {
         Debug.Log("Car");
         selectedVehicle = "Car";
@@ -27,7 +31,7 @@ public class ScrollbarManager : MonoBehaviour
 
 
     }
-    public void OnButton3()
+    public void OnJeep()
     {
         Debug.Log("Jeep");
         selectedVehicle = "Jeep";
@@ -35,21 +39,21 @@ public class ScrollbarManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
-    public void OnButton4()
+    public void OnMiniVan()
     {
         Debug.Log("Mini Van");
         selectedVehicle = "Mini Van";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void OnButton5()
+    public void OnTruck()
     {
         Debug.Log("Truck");
         selectedVehicle = "Truck";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void OnButton6()
+    public void OnTempo()
     {
         Debug.Log("Tempo");
         selectedVehicle = "Tempo";
