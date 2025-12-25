@@ -1,10 +1,13 @@
+using System.Collections.Generic;
 using System.IO;
+using NUnit.Framework;
 using UnityEngine;
 
 public class GameSaver : MonoBehaviour
 {
     public static GameSaver Instance;
     string path;
+    PlayerData data;
 
     private void Awake()
     {
@@ -17,37 +20,74 @@ public class GameSaver : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         path = Application.persistentDataPath + "/PlayerData.json";
 
-        GetCoins();
+        EnsurePath();
+        LoadData();
+
 
     }
 
     public long Coins { get; private set; }
-    
-    public void SaveCoins(long coins)
-    {
-        EnsurePath();
-        Coins = coins;
-        PlayerData data = new PlayerData();
-        data.coins = coins;
-
-        string json = JsonUtility.ToJson(data);
-        File.WriteAllText(path, json);
-    }
-
-    public long GetCoins()
-    {
-        if(!File.Exists(path)) return 0;
-
-        string json = File.ReadAllText(path);
-        PlayerData data = JsonUtility.FromJson<PlayerData>(json);
-        Coins = data.coins;
-        return Coins;
-    }
-
     void EnsurePath()
     {
         if (string.IsNullOrEmpty(path))
             path = Application.persistentDataPath + "/PlayerData.json";
     }
+
+    public void Save()
+    {
+        EnsurePath();
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(path, json);
+    }
+    
+    public void SaveCoins(long coins)
+    {
+        EnsurePath();
+        Coins = coins;
+        
+        data.coins = coins;
+        Save();
+    }
+
+    public void LoadData()
+    {
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            data = JsonUtility.FromJson<PlayerData>(json);
+        }
+        else
+        {
+            data = new PlayerData();
+            data.coins = 0;
+            data.unlockedvehicles = new List<string>() { "Bike" };
+            Save();
+        }
+
+        if (data.unlockedvehicles == null)
+            data.unlockedvehicles = new List<string>();
+
+        Coins = data.coins;
+    }
+
+    public void UnlockVehicle(string vehicle)
+    {
+        if (!data.unlockedvehicles.Contains(vehicle))
+        {
+            data.unlockedvehicles.Add(vehicle);
+            Save();
+        }
+    }
+
+    public bool IsVehicleUnlocked(string vehicle)
+    {
+        return data.unlockedvehicles.Contains(vehicle);
+    }
+
+    public List<string> GetUnlockedVehicle()
+    {
+        return data.unlockedvehicles;
+    }
+
 
 }
