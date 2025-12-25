@@ -3,11 +3,14 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScrollbarManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> dullScreenList;
     [SerializeField] GameObject buyScreen;
+    [SerializeField] GameObject purchaseSuccessScreen;
+
     string selectedVehicle;
 
     Dictionary<string, int> vehicleCosts = new Dictionary<string, int>()
@@ -18,11 +21,27 @@ public class ScrollbarManager : MonoBehaviour
         {"Truck", 20000 },
         {"Tempo", 25000 }
     };
+    Dictionary<string, int> vehicleOrder = new Dictionary<string, int>()
+    {
+        {"Car",0 },
+        {"Jeep", 1 },
+        {"Mini Van", 2 },
+        {"Truck", 3 },
+        {"Tempo", 4 }
+    };
 
     private void Start()
     {
         selectedVehicle = "None";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
+        
+        foreach(KeyValuePair<string, int> item in vehicleOrder)
+        {
+            if (GameSaver.Instance.IsVehicleUnlocked(item.Key))
+            {
+                dullScreenList[item.Value].SetActive(false);
+            }
+        }
     }
 
     public void OnBike()
@@ -69,6 +88,7 @@ public class ScrollbarManager : MonoBehaviour
 
     void TrySelectVehicle(string vehicle)
     {
+        selectedVehicle = vehicle;
         if (GameSaver.Instance.IsVehicleUnlocked(vehicle))
         {
             PlayerPrefs.SetString("SelectedVehicle", vehicle);
@@ -88,6 +108,27 @@ public class ScrollbarManager : MonoBehaviour
 
         buyText.text = "Want to but for " + vehicleCost.ToString() + " ?";
 
+    }
+
+    public void OnBuyClick()
+    {
+        TMP_Text buyText = buyScreen.GetComponentInChildren<TMP_Text>();
+
+        if (GameSaver.Instance.Coins >= vehicleCosts[selectedVehicle] )
+        {
+            buyText.text = "Purchased Successfully";
+            GameSaver.Instance.SaveCoins(GameSaver.Instance.Coins - vehicleCosts[selectedVehicle]);
+            GameSaver.Instance.UnlockVehicle(selectedVehicle);
+            Debug.Log(selectedVehicle + " Unlocked");
+            dullScreenList[vehicleOrder[selectedVehicle]].SetActive(false);
+            buyScreen.SetActive(false);
+            purchaseSuccessScreen.SetActive(true);
+
+        }
+        else
+        {
+            buyText.text = "Not Enough Money";
+        }
     }
 
 
