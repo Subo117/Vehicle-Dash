@@ -8,6 +8,7 @@ public class PlayerCollision : MonoBehaviour
     CoinCollector collector;
     PlayerControl playerControl;
     ScoreManager scoreManager;
+    GameOverManager gameOverManager;
 
     public bool isCrashed = false;
     public bool isShieldActive = false;
@@ -26,7 +27,16 @@ public class PlayerCollision : MonoBehaviour
         scoreManager = FindAnyObjectByType<ScoreManager>();
         collector = FindAnyObjectByType<CoinCollector>();
         collector.gameObject.SetActive(false);
+        gameOverManager = FindAnyObjectByType<GameOverManager>();
 
+    }
+    private void Update()
+    {
+        if (isCrashed)
+        {
+            Debug.Log("Crashed");
+            gameOverManager.OnGameOver();
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -102,6 +112,8 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    
+
     IEnumerator ShieldCoroutine(Collision collision)
     {
         isShieldActive = true;
@@ -125,5 +137,7 @@ public class PlayerCollision : MonoBehaviour
         collector.gameObject.SetActive(false);
 
     }
+
+    
 
 }

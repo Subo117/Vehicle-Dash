@@ -1,0 +1,40 @@
+using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
+public class GameOverManager : MonoBehaviour
+{
+    [SerializeField] GameObject GameOverScreen;
+    [SerializeField] GameObject pauseButton;
+
+
+    public void OnGameOver()
+    {
+        pauseButton.SetActive(false);
+        StartCoroutine(CrashedCoroutne());
+
+    }
+
+    public void OnRestart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    IEnumerator CrashedCoroutne()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 1f;
+
+        GameOverScreen.gameObject.SetActive(true);
+
+        Debug.Log("Set true");
+
+    }
+}
