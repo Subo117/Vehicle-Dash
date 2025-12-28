@@ -10,14 +10,12 @@ public class PlayerControl : MonoBehaviour
     InputAction left;
     InputAction right;
 
-    Animator animator;
     float laneDistance = 15f;
     int currentLane = 0;
     public bool isMovable = true;
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
         left = InputSystem.actions.FindAction("Left");
         right = InputSystem.actions.FindAction("Right");
 
@@ -31,13 +29,11 @@ public class PlayerControl : MonoBehaviour
         if (left.WasPressedThisFrame() && (currentLane > -1))
         {
             currentLane--;
-            animator.Play("Left", 0, 0f);
         }
 
         if (right.WasPressedThisFrame() && currentLane < 1)
         {
             currentLane++;
-            animator.Play("Right", 0, 0f);
         }
 
 
