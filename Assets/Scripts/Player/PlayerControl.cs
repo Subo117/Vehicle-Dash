@@ -1,6 +1,9 @@
+using System;
+using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -10,16 +13,20 @@ public class PlayerControl : MonoBehaviour
     InputAction left;
     InputAction right;
 
+    Animator animator;
     float laneDistance = 15f;
     int currentLane = 0;
     public bool isMovable = true;
+
+    List<String> twoWheeler = new List<String>() { "Bike"};
 
     private void Awake()
     {
         left = InputSystem.actions.FindAction("Left");
         right = InputSystem.actions.FindAction("Right");
-
-
+        animator = playerModel.GetComponent<Animator>();
+        Debug.Log(playerModel.name);
+        Debug.Log(animator == null);
     }
     
     private void Update()
@@ -29,11 +36,15 @@ public class PlayerControl : MonoBehaviour
         if (left.WasPressedThisFrame() && (currentLane > -1))
         {
             currentLane--;
+            if(twoWheeler.Contains(PlayerPrefs.GetString("SelectedVehicle"))) animator.Play("2Left", 0, 0f);
+            else animator.Play("4Left", 0, 0f);
         }
 
         if (right.WasPressedThisFrame() && currentLane < 1)
         {
             currentLane++;
+            if (twoWheeler.Contains(PlayerPrefs.GetString("SelectedVehicle"))) animator.Play("2Right", 0, 0f);
+            else animator.Play("4Right", 0, 0f);
         }
 
 
