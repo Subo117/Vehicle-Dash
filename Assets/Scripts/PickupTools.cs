@@ -14,12 +14,15 @@ public class PickupTools : MonoBehaviour
     InputAction ability;
     GameSpeedManager gameSpeedManager;
     CinemachineCamera cmCamera;
+    CinemachineFollow cmFollow;
+
     PlayerCollision playerCollision;
 
     float normalFOV = 60f;
     float zoomOutFOV = 80f;
 
-    float normalSP = 0.2f;
+    float normalYOffset = 10f;
+    float zoomOutYOffset = 5f;
 
     void Start()
     {
@@ -27,8 +30,10 @@ public class PickupTools : MonoBehaviour
         playerCollision = GetComponentInChildren<PlayerCollision>();
         ability = InputSystem.actions.FindAction("Ability");
         cmCamera = FindAnyObjectByType<CinemachineCamera>();
+        cmFollow = FindAnyObjectByType<CinemachineFollow>();
 
         cmCamera.Lens.FieldOfView = normalFOV;
+        cmFollow.FollowOffset.y = normalYOffset;
         
     }
 
@@ -51,7 +56,7 @@ public class PickupTools : MonoBehaviour
 
     IEnumerator NitroCoroutine()
     {
-        StartCoroutine(FOVCoroutine(zoomOutFOV));
+        StartCoroutine(FOVCoroutine(zoomOutFOV, zoomOutYOffset));
         playerCollision.isNitroActive = true;
         float tempMaxSpeed = gameSpeedManager.maxSpeed;
         float tempCurrentSpeed = gameSpeedManager.currentSpeed;
@@ -59,21 +64,24 @@ public class PickupTools : MonoBehaviour
         gameSpeedManager.maxSpeed = nitroSpeed;
         gameSpeedManager.currentSpeed = nitroSpeed;
         yield return new WaitForSeconds(nitroTime);
-        StartCoroutine(FOVCoroutine(normalFOV));
+        StartCoroutine(FOVCoroutine(normalFOV, normalYOffset));
+        yield return new WaitForSeconds(transitionTime);
         gameSpeedManager.maxSpeed = tempMaxSpeed;
         gameSpeedManager.currentSpeed = tempCurrentSpeed;
         playerCollision.isShieldActive = false;
         playerCollision.isNitroActive = false;
     }
 
-    IEnumerator FOVCoroutine(float targetFOV)
+    IEnumerator FOVCoroutine(float targetFOV, float targetYOffset)
     {
         float startFOV = cmCamera.Lens.FieldOfView;
+        float startYOffset = cmFollow.FollowOffset.y;
         float timer = 0;
         while(timer < transitionTime)
         {
             timer += Time.deltaTime;
             cmCamera.Lens.FieldOfView = Mathf.Lerp(startFOV, targetFOV, timer / transitionTime);
+            cmFollow.FollowOffset.y = Mathf.Lerp(startYOffset, targetYOffset, timer / transitionTime);
             yield return null;
 
         }

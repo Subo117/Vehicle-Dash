@@ -7,10 +7,18 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] GameObject GameOverScreen;
     [SerializeField] GameObject pauseButton;
 
+    PlayerCollision playerCollision;
+
+
+    private void Start()
+    {
+        playerCollision = FindAnyObjectByType<PlayerCollision>();
+    }
 
     public void OnGameOver()
     {
         pauseButton.SetActive(false);
+        playerCollision.isCrashed = true;
         StartCoroutine(CrashedCoroutne());
 
     }
