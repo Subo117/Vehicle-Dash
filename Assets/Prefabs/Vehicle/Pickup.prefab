@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 868766355762308798}
-  - component: {fileID: 5298499584570167187}
   - component: {fileID: 1363432808133324058}
   m_Layer: 0
-  m_Name: Jeep
+  m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,33 +28,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 711284798320921170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5298499584570167187
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3591747369275986997}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 12a78dd8582b58e4289d087101f00678, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1363432808133324058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,9 +79,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1433583251418408014}
+  - {fileID: 3330292057499996255}
   m_Father: {fileID: 868766355762308798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1050252546011643401
@@ -126,8 +103,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 2, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6, y: 5, z: 11}
+  m_Center: {x: 0, y: 1.49, z: -0.12}
 --- !u!54 &7262139981603239928
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,7 +150,7 @@ MonoBehaviour:
   isNitroPicked: 0
   isNitroActive: 0
   isMissilePicked: 0
---- !u!1001 &2308242660316907330
+--- !u!1001 &1117795072297387655
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -181,69 +158,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 711284798320921170}
     m_Modifications:
-    - target: {fileID: 559291512470162573, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
-      propertyPath: m_Name
-      value: Jeep Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
+    - target: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524158203048131391, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+      propertyPath: m_Name
+      value: Pickup Model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
---- !u!4 &1433583251418408014 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+--- !u!4 &3330292057499996255 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3741816359439950604, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
-  m_PrefabInstance: {fileID: 2308242660316907330}
+  m_CorrespondingSourceObject: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+  m_PrefabInstance: {fileID: 1117795072297387655}
   m_PrefabAsset: {fileID: 0}
