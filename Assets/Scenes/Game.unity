@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c895afe994e77b14baa6f8d7878f4a3a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadPrefab: {fileID: 1372753237658102494, guid: f02b8b9ed1e282142b70f05d595b25c1, type: 3}
-  tempRoadPrefab: {fileID: 1372753237658102494, guid: 8e0814bb32892594a882cd2e706363c1, type: 3}
+  tempRoadPrefab: {fileID: 1372753237658102494, guid: 5a31643e9ac44fa44abf072ae4e84ead, type: 3}
   chunkParent: {fileID: 1914997856}
   noOfRoads: 20
   chunkDist: 40
