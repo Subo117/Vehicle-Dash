@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadPrefab: {fileID: 1372753237658102494, guid: f02b8b9ed1e282142b70f05d595b25c1, type: 3}
-  tempRoadPrefab: {fileID: 1372753237658102494, guid: d77aeaaa1d21bc34cbbcbc5b60153c3a, type: 3}
+  tempRoadPrefab: {fileID: 1372753237658102494, guid: 8e0814bb32892594a882cd2e706363c1, type: 3}
   chunkParent: {fileID: 1914997856}
   noOfRoads: 20
   chunkDist: 40
@@ -834,7 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 501894563}
-  moveSpeed: 40
+  moveSpeed: 35
   isMovable: 1
 --- !u!1 &1340405026
 GameObject:
