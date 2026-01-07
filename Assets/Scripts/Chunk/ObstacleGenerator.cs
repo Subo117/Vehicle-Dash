@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
@@ -59,6 +60,8 @@ public class ObstacleGenerator : MonoBehaviour
         Vector3 boostPos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
         Instantiate(selectedBoost, boostPos, Quaternion.identity, this.transform);
     }
+
+    
 
     int SelectLane()
     {

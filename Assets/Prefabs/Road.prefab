@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403226297190664169}
   - component: {fileID: 3577794389852860554}
+  - component: {fileID: -4305886148221367097}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -54,6 +55,24 @@ MonoBehaviour:
   - {fileID: 4033603183312779342, guid: bac1450b1839c2d4580ff4572d4972e7, type: 3}
   boosts:
   - {fileID: 5245603606814652199, guid: 65e661a7a3c00fc4e8fdd431c5330144, type: 3}
+--- !u!114 &-4305886148221367097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372753237658102494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb208c008efba344bf91d2b84ed2fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Buildings:
+  - {fileID: 5947246499368507030, guid: 6f531d764e2d59c4db5b79af08143392, type: 3}
+  - {fileID: 7573926401719690614, guid: 61aa0cab214a5194781230fe7a6f048f, type: 3}
+  - {fileID: 4715617546045571917, guid: 160b1821b91936844b240a46dbd78655, type: 3}
+  - {fileID: 4993186402503781852, guid: 50d63f454d53e884aaa81d282bb2b21e, type: 3}
+  - {fileID: 4746627750663302556, guid: 4d6bbfb1119b98b4da9819d1a2b5f708, type: 3}
 --- !u!1 &1815811788498055377
 GameObject:
   m_ObjectHideFlags: 0

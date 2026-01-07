@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerCollision : MonoBehaviour
     public bool isNitroActive = false;
     public bool isMissilePicked = false;
     bool isTwiceCoinActive = false;
+
+    bool isCrashable = true;
 
     Coroutine shieldCoroutine;
     Coroutine magnetCoroutine;
@@ -37,9 +40,12 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Crashed");
             gameOverManager.OnGameOver();
         }
+        if (Keyboard.current.cKey.wasPressedThisFrame) isCrashable = !isCrashable;
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (!isCrashable) return;
+
         if (collision.gameObject.CompareTag("Car"))
         {
             if (isShieldActive)
