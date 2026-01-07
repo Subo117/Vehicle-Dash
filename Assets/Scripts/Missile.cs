@@ -6,8 +6,6 @@ public class Missile : MonoBehaviour
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] ParticleSystem blastVFX;
 
-    bool isBlast = false;
-
     private void Update()
     {
         transform.position += Vector3.forward * missileSpeed * Time.deltaTime;

@@ -3,13 +3,15 @@ using UnityEngine.InputSystem;
 
 public class GameSpeedManager : MonoBehaviour
 {
-    [SerializeField] public float maxSpeed = 200f;
+    [SerializeField] public float maxSpeed = 150f;
     [SerializeField] float secondsForSpeedBoost = 2f;
-
+    [SerializeField] float minAngle = 120f;
+    [SerializeField] float maxAngle = -120f;
+    [SerializeField] GameObject SpeedometerNeedle;
     InputAction accelarate;
 
-    public float baseSpeed = 15f;
-    public float currentSpeed = 15f;
+    public float baseSpeed = 20f;
+    public float currentSpeed = 20f;
     float timer = 0f;
 
     private void Awake()
@@ -32,6 +34,10 @@ public class GameSpeedManager : MonoBehaviour
             currentSpeed -= Time.deltaTime * 5;
         }
         //Debug.Log(currentSpeed);
+
+        SpeedometerNeedle.transform.eulerAngles = new Vector3(0, 0, GetRotationAngle());
+
+
     }
 
     void HandleLinearSpeedIncrement()
@@ -44,8 +50,14 @@ public class GameSpeedManager : MonoBehaviour
             currentSpeed = Mathf.Max(currentSpeed, baseSpeed);
             timer = 0;
         }
-        
+    }
 
+    float GetRotationAngle()
+    {
+        float targetAngle = minAngle - maxAngle;
+        float speedNormalised = currentSpeed / maxSpeed;
+
+        return minAngle - targetAngle * speedNormalised;
     }
 
 }

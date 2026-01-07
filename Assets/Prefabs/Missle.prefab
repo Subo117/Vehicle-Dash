@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missileSpeed: 200
   rotateSpeed: 150
-  blastVFX: {fileID: 2512912906725097171, guid: 390b8a99f52b89d4a918c5102411f5b4, type: 3}
+  blastVFX: {fileID: 3831550124527520028, guid: 174ef17a48ecb834aae50aceedcdc0c4, type: 3}
 --- !u!65 &8156396897917162927
 BoxCollider:
   m_ObjectHideFlags: 0
