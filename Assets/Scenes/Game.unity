@@ -1140,7 +1140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355400aaa36f0134eaa54ba43fd995fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverScreen: {fileID: 7134573991190480419}
+  gameOverScreen: {fileID: 7134573991190480419}
+  speedometer: {fileID: 1429604587}
   pauseButton: {fileID: 6282884533189746981}
 --- !u!4 &1645099330
 Transform:
@@ -2975,9 +2976,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3365763176783910097}
+  - {fileID: 1429604588}
   - {fileID: 4921105585110159676}
   - {fileID: 1791601387393397728}
-  - {fileID: 1429604588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

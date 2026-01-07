@@ -8,7 +8,9 @@ public class GameSpeedManager : MonoBehaviour
     [SerializeField] float minAngle = 120f;
     [SerializeField] float maxAngle = -120f;
     [SerializeField] GameObject SpeedometerNeedle;
+
     InputAction accelarate;
+    PlayerCollision playerCollision;
 
     public float baseSpeed = 20f;
     public float currentSpeed = 20f;
@@ -17,11 +19,14 @@ public class GameSpeedManager : MonoBehaviour
     private void Awake()
     {
         accelarate = InputSystem.actions.FindAction("Accelerate");
+        playerCollision = FindAnyObjectByType<PlayerCollision>();
+
 
     }
 
     private void Update()
     {
+        if (playerCollision.isCrashed) return;
         HandleLinearSpeedIncrement();
         if (accelarate.IsPressed())
         {
@@ -33,7 +38,7 @@ public class GameSpeedManager : MonoBehaviour
             if(currentSpeed <= baseSpeed) return;
             currentSpeed -= Time.deltaTime * 5;
         }
-        //Debug.Log(currentSpeed);
+        Debug.Log(currentSpeed);
 
         SpeedometerNeedle.transform.eulerAngles = new Vector3(0, 0, GetRotationAngle());
 

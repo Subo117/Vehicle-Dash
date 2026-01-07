@@ -5,11 +5,14 @@ using UnityEngine.InputSystem;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] float timeToWait = 10f;
+    [SerializeField] ParticleSystem blastVFX;
 
     CoinCollector collector;
     PlayerControl playerControl;
     ScoreManager scoreManager;
     GameOverManager gameOverManager;
+
+    ParticleSystem smokeVFX;
 
     public bool isCrashed = false;
     public bool isShieldActive = false;
@@ -31,6 +34,16 @@ public class PlayerCollision : MonoBehaviour
         collector = FindAnyObjectByType<CoinCollector>();
         collector.gameObject.SetActive(false);
         gameOverManager = FindAnyObjectByType<GameOverManager>();
+        smokeVFX = GetComponentInChildren<ParticleSystem>(true);
+        if (smokeVFX != null)
+        {
+            Debug.Log("Yes");
+
+        }
+        else
+        {
+            Debug.Log("No");
+        }
 
     }
     private void Update()
@@ -52,13 +65,19 @@ public class PlayerCollision : MonoBehaviour
             {
                 isCrashed = false;
                 playerControl.isMovable = true;
+
+                ParticleSystem vfx = Instantiate(blastVFX, transform.position, Quaternion.identity);
+                vfx.Play();
+                float totalTime = vfx.main.duration + vfx.main.startLifetime.constantMax;
+                Destroy(vfx.gameObject, totalTime);
+
                 Destroy(collision.gameObject);
             }
             else
             {
                 isCrashed = true;
                 playerControl.isMovable = false;
-
+                smokeVFX.gameObject.SetActive(true);
             }
         }
         else if (collision.gameObject.CompareTag("Shield"))
