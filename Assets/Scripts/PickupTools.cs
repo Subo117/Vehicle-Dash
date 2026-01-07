@@ -48,7 +48,7 @@ public class PickupTools : MonoBehaviour
         if(playerCollision.isMissilePicked && ability.WasPressedThisFrame())
         {
             Debug.Log("Missle");
-            Instantiate(missilePrefab, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(missilePrefab, transform.position, Quaternion.identity);
             playerCollision.isMissilePicked = false;
         }
 
