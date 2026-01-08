@@ -13,41 +13,39 @@ public class ScrollbarManager : MonoBehaviour
 
     string selectedVehicle;
 
+    List<string> vehicles = new List<string>() { "Car", "Omni", "Jeep", "Buggy", "Police", "Vintage", "Cartoon", "Bugatti"};
+    
     Dictionary<string, int> vehicleCosts = new Dictionary<string, int>()
     {
         {"Car",1000 },
+        {"Omni", 3000 },
         {"Jeep", 5000 },
-        {"Mini Van", 10000 },
-        {"Truck", 20000 },
-        {"Tempo", 25000 }
+        {"Buggy", 10000 },
+        {"Police", 15000 },
+        {"Vintage", 20000 },
+        {"Cartoon", 25000 },
+        {"Bugatti", 30000 }
     };
-    Dictionary<string, int> vehicleOrder = new Dictionary<string, int>()
-    {
-        {"Car",0 },
-        {"Jeep", 1 },
-        {"Mini Van", 2 },
-        {"Truck", 3 },
-        {"Tempo", 4 }
-    };
+    
 
     private void Start()
     {
         selectedVehicle = "None";
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
         
-        foreach(KeyValuePair<string, int> item in vehicleOrder)
+        foreach(string item in vehicles)
         {
-            if (GameSaver.Instance.IsVehicleUnlocked(item.Key))
+            if (GameSaver.Instance.IsVehicleUnlocked(item))
             {
-                dullScreenList[item.Value].SetActive(false);
+                dullScreenList[vehicles.IndexOf(item)].SetActive(false);
             }
         }
     }
 
-    public void OnBike()
+    public void OnPickup()
     {
-        Debug.Log("Bike");
-        selectedVehicle = "Bike";
+        Debug.Log("Pickup");
+        selectedVehicle = "Pickup";
 
         
         PlayerPrefs.SetString("SelectedVehicle", selectedVehicle);
@@ -58,31 +56,49 @@ public class ScrollbarManager : MonoBehaviour
     public void OnCar()
     {
         Debug.Log("Car");
-        TrySelectVehicle("Car");
+        TrySelectVehicle(vehicles[0]);
+
+    }
+    public void OnOmni()
+    {
+        Debug.Log("Omni");
+        TrySelectVehicle(vehicles[1]);
 
     }
     public void OnJeep()
     {
         Debug.Log("Jeep");
-        TrySelectVehicle("Jeep");
+        TrySelectVehicle(vehicles[2]);
 
     }
-    public void OnMiniVan()
+    public void OnBuggy()
     {
-        Debug.Log("Mini Van");
-        TrySelectVehicle("Mini Van");
+        Debug.Log("Buggy");
+        TrySelectVehicle(vehicles[3]);
 
     }
-    public void OnTruck()
+    public void OnPolice()
     {
-        Debug.Log("Truck");
-        TrySelectVehicle("Truck");
+        Debug.Log("Police");
+        TrySelectVehicle(vehicles[4]);
 
     }
-    public void OnTempo()
+    public void OnVintage()
     {
-        Debug.Log("Tempo");
-        TrySelectVehicle("Tempo");
+        Debug.Log("Vintage");
+        TrySelectVehicle(vehicles[5]);
+
+    }
+    public void OnCartoon()
+    {
+        Debug.Log("Cartoon");
+        TrySelectVehicle(vehicles[6]);
+
+    }
+    public void OnBugatti()
+    {
+        Debug.Log("Bugatti");
+        TrySelectVehicle(vehicles[7]);
 
     }
 
@@ -106,7 +122,7 @@ public class ScrollbarManager : MonoBehaviour
 
         
 
-        buyText.text = "Want to but for " + vehicleCost.ToString() + " ?";
+        buyText.text = "Want to buy " + selectedVehicle + " for " + vehicleCost.ToString() + " ?";
 
     }
 
@@ -120,7 +136,7 @@ public class ScrollbarManager : MonoBehaviour
             GameSaver.Instance.SaveCoins(GameSaver.Instance.Coins - vehicleCosts[selectedVehicle]);
             GameSaver.Instance.UnlockVehicle(selectedVehicle);
             Debug.Log(selectedVehicle + " Unlocked");
-            dullScreenList[vehicleOrder[selectedVehicle]].SetActive(false);
+            dullScreenList[vehicles.IndexOf(selectedVehicle)].SetActive(false);
             buyScreen.SetActive(false);
             purchaseSuccessScreen.SetActive(true);
 

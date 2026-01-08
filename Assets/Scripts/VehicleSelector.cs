@@ -2,23 +2,31 @@ using UnityEngine;
 
 public class VehicleSelector : MonoBehaviour
 {
-    [SerializeField] GameObject bikePrefab;
+    [SerializeField] GameObject PickupPrefab;
     [SerializeField] GameObject carPrefab;
+    [SerializeField] GameObject omniPrefab;
     [SerializeField] GameObject jeepPrefab;
-    [SerializeField] GameObject miniVanPrefab;
-    [SerializeField] GameObject truckPrefab;
-    [SerializeField] GameObject tempoPrefab;
+    [SerializeField] GameObject buggyPrefab;
+    [SerializeField] GameObject policePrefab;
+    [SerializeField] GameObject vintagePrefab;
+    [SerializeField] GameObject cartoonPrefab;
+    [SerializeField] GameObject BugattiPrefab;
 
     private void Awake()
     {
         string selected = PlayerPrefs.GetString("SelectedVehicle");
-        if(selected == "Bike")
+        if(selected == "Pickup")
         {
-            Instantiate(bikePrefab, transform.position, Quaternion.identity, transform);
+            Instantiate(PickupPrefab, transform.position, Quaternion.identity, transform);
         }
         else if(selected == "Car")
         {
             Instantiate(carPrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if(selected == "Omni")
+        {
+            Instantiate(omniPrefab, transform.position, Quaternion.identity, transform);
 
         }
         else if (selected == "Jeep")
@@ -26,19 +34,29 @@ public class VehicleSelector : MonoBehaviour
             Instantiate(jeepPrefab, transform.position, Quaternion.identity, transform);
 
         }
-        else if (selected == "Mini Van")
+        else if (selected == "Buggy")
         {
-            Instantiate(miniVanPrefab, transform.position, Quaternion.identity, transform);
+            Instantiate(buggyPrefab, transform.position, Quaternion.identity, transform);
 
         }
-        else if (selected == "Truck")
+        else if (selected == "Police")
         {
-            Instantiate(truckPrefab, transform.position, Quaternion.identity, transform);
+            Instantiate(policePrefab, transform.position, Quaternion.identity, transform);
 
         }
-        else if (selected == "Tempo")
+        else if (selected == "Vintage")
         {
-            Instantiate(tempoPrefab, transform.position, Quaternion.identity, transform);
+            Instantiate(vintagePrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if (selected == "Cartoon")
+        {
+            Instantiate(cartoonPrefab, transform.position, Quaternion.identity, transform);
+
+        }
+        else if (selected == "Bugatti")
+        {
+            Instantiate(BugattiPrefab, transform.position, Quaternion.identity, transform);
 
         }
     }

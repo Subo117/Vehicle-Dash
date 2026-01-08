@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class GameSpeedManager : MonoBehaviour
 {
-    [SerializeField] public float maxSpeed = 150f;
+    [SerializeField] public float maxSpeed = 180f;
     [SerializeField] float secondsForSpeedBoost = 2f;
+    [SerializeField] float accelerateMultiplier = 10f;
     [SerializeField] float minAngle = 120f;
     [SerializeField] float maxAngle = -120f;
     [SerializeField] GameObject SpeedometerNeedle;
@@ -27,20 +28,24 @@ public class GameSpeedManager : MonoBehaviour
     private void Update()
     {
         if (playerCollision.isCrashed) return;
+
+        SpeedometerNeedle.transform.eulerAngles = new Vector3(0, 0, GetRotationAngle());
+
         HandleLinearSpeedIncrement();
+
         if (accelarate.IsPressed())
         {
-            if (currentSpeed > maxSpeed) return;
-            currentSpeed += Time.deltaTime * 5;
+            currentSpeed += Time.deltaTime * accelerateMultiplier;
         }
         else
         {
-            if(currentSpeed <= baseSpeed) return;
-            currentSpeed -= Time.deltaTime * 5;
+            currentSpeed -= Time.deltaTime * accelerateMultiplier;
         }
-        //Debug.Log(currentSpeed);
 
-        SpeedometerNeedle.transform.eulerAngles = new Vector3(0, 0, GetRotationAngle());
+        currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed);
+
+        Debug.Log(currentSpeed);
+
 
 
     }
@@ -52,9 +57,10 @@ public class GameSpeedManager : MonoBehaviour
         if (timer > secondsForSpeedBoost)
         {
             baseSpeed++;
-            currentSpeed = Mathf.Max(currentSpeed, baseSpeed);
             timer = 0;
         }
+        currentSpeed = Mathf.Max(currentSpeed, baseSpeed);
+
     }
 
     float GetRotationAngle()
