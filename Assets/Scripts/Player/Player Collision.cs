@@ -157,12 +157,16 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator MagnetRoutine()
     {
+        Debug.Log("magnet enabled");
+
         collector.gameObject.SetActive(true);
         yield return new WaitForSeconds(timeToWait);
         collector.gameObject.SetActive(false);
 
+        Debug.Log("magnet disabled");
+
     }
 
-    
+
 
 }

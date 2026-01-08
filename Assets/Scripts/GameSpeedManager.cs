@@ -38,7 +38,7 @@ public class GameSpeedManager : MonoBehaviour
             if(currentSpeed <= baseSpeed) return;
             currentSpeed -= Time.deltaTime * 5;
         }
-        Debug.Log(currentSpeed);
+        //Debug.Log(currentSpeed);
 
         SpeedometerNeedle.transform.eulerAngles = new Vector3(0, 0, GetRotationAngle());
 
