@@ -273,10 +273,58 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 877014800052967713, guid: 9db2fee91ab35a842bc0dc530b13742d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3228807294285752090}
+    - targetCorrespondingSourceObject: {fileID: 2658219750640841204, guid: 9db2fee91ab35a842bc0dc530b13742d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7475751894468880099}
   m_SourcePrefab: {fileID: 100100000, guid: 9db2fee91ab35a842bc0dc530b13742d, type: 3}
 --- !u!4 &5960909546913154576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3020506262633715630, guid: 9db2fee91ab35a842bc0dc530b13742d, type: 3}
   m_PrefabInstance: {fileID: 8886615642117919166}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6895148538653679690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2658219750640841204, guid: 9db2fee91ab35a842bc0dc530b13742d, type: 3}
+  m_PrefabInstance: {fileID: 8886615642117919166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7475751894468880099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895148538653679690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 500
+  yRotate: 0
+  zRotate: 0
+  rotateSpeed: 100
+--- !u!1 &8608720331071588511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 877014800052967713, guid: 9db2fee91ab35a842bc0dc530b13742d, type: 3}
+  m_PrefabInstance: {fileID: 8886615642117919166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3228807294285752090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608720331071588511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 500
+  yRotate: 0
+  zRotate: 0
+  rotateSpeed: 100

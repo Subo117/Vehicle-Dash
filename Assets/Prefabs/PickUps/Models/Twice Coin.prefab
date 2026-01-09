@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2371092714141210645}
   - component: {fileID: 2312013664815232706}
   - component: {fileID: 6906976014621771769}
+  - component: {fileID: -9012970891337871779}
   m_Layer: 0
   m_Name: Twice Coin
   m_TagString: TwiceCoin
@@ -136,3 +137,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &-9012970891337871779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155278953369316925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 0
+  yRotate: 150
+  zRotate: 0
+  rotateSpeed: 100

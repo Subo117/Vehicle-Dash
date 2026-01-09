@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 10
+  blastVFX: {fileID: 0}
   isCrashed: 0
   isShieldActive: 0
   isNitroPicked: 0
@@ -205,10 +206,106 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4367659672219795066, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7063714974775831690}
+    - targetCorrespondingSourceObject: {fileID: 6036836027229951068, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6788278902422037291}
+    - targetCorrespondingSourceObject: {fileID: 6122511162704988393, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5705154858583112080}
+    - targetCorrespondingSourceObject: {fileID: 400618709279707447, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4275921180079903856}
   m_SourcePrefab: {fileID: 100100000, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+--- !u!1 &724090142063187888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 400618709279707447, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+  m_PrefabInstance: {fileID: 1117795072297387655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4275921180079903856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724090142063187888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 500
+  yRotate: 0
+  zRotate: 0
+  rotateSpeed: 100
 --- !u!4 &3330292057499996255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2428748933307061976, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
   m_PrefabInstance: {fileID: 1117795072297387655}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3683451804886137085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4367659672219795066, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+  m_PrefabInstance: {fileID: 1117795072297387655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7063714974775831690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683451804886137085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 500
+  yRotate: 0
+  zRotate: 0
+  rotateSpeed: 100
+--- !u!1 &6590089813130661486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6122511162704988393, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+  m_PrefabInstance: {fileID: 1117795072297387655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5705154858583112080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590089813130661486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 500
+  yRotate: 0
+  zRotate: 0
+  rotateSpeed: 100
+--- !u!1 &6648459651608580827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6036836027229951068, guid: d3a1fd2117cce0147a4f25bf78a958e4, type: 3}
+  m_PrefabInstance: {fileID: 1117795072297387655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6788278902422037291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648459651608580827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d132514391994996ca94809a46767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotate: 500
+  yRotate: 0
+  zRotate: 0
+  rotateSpeed: 100
