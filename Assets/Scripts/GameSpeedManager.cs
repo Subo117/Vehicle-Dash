@@ -44,7 +44,7 @@ public class GameSpeedManager : MonoBehaviour
 
         currentSpeed = Mathf.Clamp(currentSpeed, baseSpeed, maxSpeed);
 
-        Debug.Log(currentSpeed);
+        //Debug.Log(currentSpeed);
 
 
 

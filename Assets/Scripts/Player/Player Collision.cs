@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [SerializeField] float timeToWait = 10f;
+    
+    [SerializeField] public float pickupTime = 10f;
     [SerializeField] ParticleSystem blastVFX;
 
     CoinCollector collector;
@@ -14,12 +16,17 @@ public class PlayerCollision : MonoBehaviour
 
     ParticleSystem smokeVFX;
 
+    public float magnetTimer = 0f;
+    public bool isMagnetActive = false;
+    public float shieldTimer = 0f;
+    public float twiceCoinTimer = 0f;
+
     public bool isCrashed = false;
     public bool isShieldActive = false;
     public bool isNitroPicked = false;
     public bool isNitroActive = false;
     public bool isMissilePicked = false;
-    bool isTwiceCoinActive = false;
+    public bool isTwiceCoinActive = false;
 
     bool isCrashable = true;
 
@@ -35,15 +42,7 @@ public class PlayerCollision : MonoBehaviour
         collector.gameObject.SetActive(false);
         gameOverManager = FindAnyObjectByType<GameOverManager>();
         smokeVFX = GetComponentInChildren<ParticleSystem>(true);
-        if (smokeVFX != null)
-        {
-            Debug.Log("Yes");
 
-        }
-        else
-        {
-            Debug.Log("No");
-        }
 
     }
     private void Update()
@@ -54,6 +53,8 @@ public class PlayerCollision : MonoBehaviour
             gameOverManager.OnGameOver();
         }
         if (Keyboard.current.cKey.wasPressedThisFrame) isCrashable = !isCrashable;
+
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -107,6 +108,9 @@ public class PlayerCollision : MonoBehaviour
             }
             magnetCoroutine = StartCoroutine(MagnetRoutine());
             Destroy(collision.gameObject);
+
+
+
         }
         else if (collision.gameObject.CompareTag("TwiceCoin"))
         {
@@ -142,16 +146,32 @@ public class PlayerCollision : MonoBehaviour
     IEnumerator ShieldCoroutine(Collision collision)
     {
         isShieldActive = true;
+        shieldTimer = pickupTime;
         Destroy(collision.gameObject);
-        yield return new WaitForSeconds(timeToWait);
+
+        while (shieldTimer > 0)
+        {
+            shieldTimer -= Time.deltaTime;
+            yield return null;
+        }
+
+        shieldTimer = 0;
         isShieldActive = false;
     }
 
     IEnumerator TwiceCoinCoroutine(Collision collision)
     {
         isTwiceCoinActive = true;
+        twiceCoinTimer = pickupTime;
         Destroy(collision.gameObject);
-        yield return new WaitForSeconds(timeToWait);
+
+        while (twiceCoinTimer > 0)
+        {
+            twiceCoinTimer -= Time.deltaTime;
+            yield return null;
+        }
+
+        twiceCoinTimer = 0;
         isTwiceCoinActive = false;
     }
 
@@ -159,8 +179,18 @@ public class PlayerCollision : MonoBehaviour
     {
         Debug.Log("magnet enabled");
 
+        isMagnetActive = true;
+        magnetTimer = pickupTime;
         collector.gameObject.SetActive(true);
-        yield return new WaitForSeconds(timeToWait);
+
+        while (magnetTimer > 0)
+        {
+            magnetTimer -= Time.deltaTime;
+            yield return null;
+        }
+
+        magnetTimer = 0;
+        isMagnetActive = false;
         collector.gameObject.SetActive(false);
 
         Debug.Log("magnet disabled");
