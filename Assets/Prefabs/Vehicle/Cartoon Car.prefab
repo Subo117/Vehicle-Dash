@@ -118,13 +118,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f940a48883803e54c8da7b0278625372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 10
-  blastVFX: {fileID: 0}
+  pickupTime: 10
+  blastVFX: {fileID: 3831550124527520028, guid: 174ef17a48ecb834aae50aceedcdc0c4, type: 3}
+  magnetTimer: 0
+  isMagnetActive: 0
+  shieldTimer: 0
+  twiceCoinTimer: 0
   isCrashed: 0
   isShieldActive: 0
   isNitroPicked: 0
   isNitroActive: 0
   isMissilePicked: 0
+  isTwiceCoinActive: 0
 --- !u!54 &4976425339843427247
 Rigidbody:
   m_ObjectHideFlags: 0
