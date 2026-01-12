@@ -142,20 +142,20 @@ public class PlayerCollision : MonoBehaviour
         else if (collision.gameObject.CompareTag("Nitro"))
         {
             if(isNitroActive) return;
+            if (isNitroPicked || isMissilePicked) return;
 
             MusicSettingManager.instance.PlaySound(boostClip);
 
-            if (isNitroPicked || isMissilePicked) return;
             isNitroPicked = true;
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Missile"))
         {
             if(isNitroActive) return;
+            if (isNitroPicked || isMissilePicked) return;
 
             MusicSettingManager.instance.PlaySound(boostClip);
 
-            if (isNitroPicked || isMissilePicked) return;
             Debug.Log("Collided");
             isMissilePicked = true;
             Destroy(collision.gameObject);

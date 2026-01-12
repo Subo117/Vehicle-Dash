@@ -11,6 +11,7 @@ public class ScrollbarManager : MonoBehaviour
     [SerializeField] GameObject buyScreen;
     [SerializeField] GameObject purchaseSuccessScreen;
 
+
     string selectedVehicle;
 
     List<string> vehicles = new List<string>() { "Car", "Omni", "Jeep", "Buggy", "Police", "Vintage", "Cartoon", "Bugatti"};
