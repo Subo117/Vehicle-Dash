@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class PickupTools : MonoBehaviour
 {
     [SerializeField] GameObject missilePrefab;
+    [SerializeField] AudioClip nitroClip;
     [SerializeField] float nitroSpeed = 350f;
     [SerializeField] float nitroTime = 3f;
     [SerializeField] float transitionTime = 1f;
@@ -56,6 +57,7 @@ public class PickupTools : MonoBehaviour
 
     IEnumerator NitroCoroutine()
     {
+        MusicSettingManager.instance.PlaySound(nitroClip);
         StartCoroutine(FOVCoroutine(zoomOutFOV, zoomOutYOffset));
         playerCollision.isNitroActive = true;
         float tempMaxSpeed = gameSpeedManager.maxSpeed;

@@ -8,6 +8,10 @@ public class PlayerCollision : MonoBehaviour
     
     [SerializeField] public float pickupTime = 10f;
     [SerializeField] ParticleSystem blastVFX;
+    [SerializeField] AudioClip coinClip;
+    [SerializeField] AudioClip boostClip;
+    [SerializeField] AudioClip blastClip;
+    [SerializeField] AudioClip carCrashClip;
 
     CoinCollector collector;
     PlayerControl playerControl;
@@ -62,10 +66,13 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Car"))
         {
+
             if (isShieldActive)
             {
                 isCrashed = false;
                 playerControl.isMovable = true;
+
+                MusicSettingManager.instance.PlaySound(blastClip);
 
                 ParticleSystem vfx = Instantiate(blastVFX, transform.position, Quaternion.identity);
                 vfx.Play();
@@ -79,11 +86,15 @@ public class PlayerCollision : MonoBehaviour
                 isCrashed = true;
                 playerControl.isMovable = false;
                 smokeVFX.gameObject.SetActive(true);
+
+                MusicSettingManager.instance.PlaySound(carCrashClip);
             }
         }
         else if (collision.gameObject.CompareTag("Shield"))
         {
             if (isNitroActive) return;
+
+            MusicSettingManager.instance.PlaySound(boostClip);
 
             if (shieldCoroutine != null)
             {
@@ -96,11 +107,15 @@ public class PlayerCollision : MonoBehaviour
             if (isTwiceCoinActive) scoreManager.IncreaseScore(2);
             else scoreManager.IncreaseScore(1);
 
+            MusicSettingManager.instance.PlaySound(coinClip);
+
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Magnet"))
         {
             if (isNitroActive) return;
+
+            MusicSettingManager.instance.PlaySound(boostClip);
 
             if (magnetCoroutine != null)
             {
@@ -116,6 +131,8 @@ public class PlayerCollision : MonoBehaviour
         {
             if(isNitroActive) return;
 
+            MusicSettingManager.instance.PlaySound(boostClip);
+
             if (twiceCoinCoroutine != null)
             {
                 StopCoroutine(twiceCoinCoroutine);
@@ -126,6 +143,8 @@ public class PlayerCollision : MonoBehaviour
         {
             if(isNitroActive) return;
 
+            MusicSettingManager.instance.PlaySound(boostClip);
+
             if (isNitroPicked || isMissilePicked) return;
             isNitroPicked = true;
             Destroy(collision.gameObject);
@@ -133,6 +152,8 @@ public class PlayerCollision : MonoBehaviour
         else if (collision.gameObject.CompareTag("Missile"))
         {
             if(isNitroActive) return;
+
+            MusicSettingManager.instance.PlaySound(boostClip);
 
             if (isNitroPicked || isMissilePicked) return;
             Debug.Log("Collided");

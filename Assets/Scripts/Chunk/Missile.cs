@@ -5,6 +5,7 @@ public class Missile : MonoBehaviour
     [SerializeField] float missileSpeed = 10f;
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] ParticleSystem blastVFX;
+    [SerializeField] AudioClip blastClip;
 
     private void Update()
     {
@@ -22,6 +23,7 @@ public class Missile : MonoBehaviour
             ParticleSystem vfx = Instantiate(blastVFX, transform.position, Quaternion.identity);
 
             vfx.Play();
+            MusicSettingManager.instance.PlaySound(blastClip);
 
             float totalTime = vfx.main.duration + vfx.main.startLifetime.constantMax;
 

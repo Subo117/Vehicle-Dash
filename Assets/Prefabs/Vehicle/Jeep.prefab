@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 6827806979257325492, guid: 84883bee97b16114caba865bc059f2be, type: 3}
+  nitroClip: {fileID: 8300000, guid: 185a362a42d11c64fb62dad0080dfec5, type: 3}
   nitroSpeed: 300
   nitroTime: 3
   transitionTime: 1
@@ -170,6 +171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupTime: 10
   blastVFX: {fileID: 3831550124527520028, guid: 174ef17a48ecb834aae50aceedcdc0c4, type: 3}
+  coinClip: {fileID: 8300000, guid: fd8bbf73ceb3cd646ad0e70cf6344ba4, type: 3}
+  boostClip: {fileID: 8300000, guid: eb75f3b981d7e5d48814adc0a86f9579, type: 3}
+  blastClip: {fileID: 8300000, guid: 7e45bdbb0c329354bb02e34bf6fb620c, type: 3}
+  carCrashClip: {fileID: 8300000, guid: fd902e9436539ef4ebb42a7327751ecf, type: 3}
   magnetTimer: 0
   isMagnetActive: 0
   shieldTimer: 0
@@ -286,7 +291,6 @@ MonoBehaviour:
   xRotate: 500
   yRotate: 0
   zRotate: 0
-  rotateSpeed: 100
 --- !u!1 &4980678105456973696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7284126139159908546, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
@@ -307,7 +311,6 @@ MonoBehaviour:
   xRotate: 500
   yRotate: 0
   zRotate: 0
-  rotateSpeed: 100
 --- !u!1 &7229127511584947530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4925675013649054216, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
@@ -328,7 +331,6 @@ MonoBehaviour:
   xRotate: 500
   yRotate: 0
   zRotate: 0
-  rotateSpeed: 100
 --- !u!1 &7587580215321670879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5279351779955323805, guid: e310b268b4ae32543a7769962b0009e7, type: 3}
@@ -349,7 +351,6 @@ MonoBehaviour:
   xRotate: 500
   yRotate: 0
   zRotate: 0
-  rotateSpeed: 100
 --- !u!1001 &6512476015138572722
 PrefabInstance:
   m_ObjectHideFlags: 0

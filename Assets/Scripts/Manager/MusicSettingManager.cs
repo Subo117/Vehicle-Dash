@@ -6,7 +6,7 @@ public class MusicSettingManager : MonoBehaviour
 
     public static MusicSettingManager instance;
 
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource mainAudioSource;
 
     [SerializeField] AudioClip tapClip;
     [SerializeField] AudioClip crossClip;
@@ -15,6 +15,7 @@ public class MusicSettingManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SetMusicVolume(float vol)
@@ -38,10 +39,14 @@ public class MusicSettingManager : MonoBehaviour
     }
 
 
-    void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip)
     {
+        AudioSource audioSource = Instantiate(mainAudioSource, transform.position, Quaternion.identity);
         audioSource.clip = clip;
         audioSource.Play();
+
+        float clipLength = audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
 
     }
 
