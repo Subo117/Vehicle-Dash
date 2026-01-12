@@ -2,15 +2,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class LoadScreenManager : MonoBehaviour
 {
     public Slider loadingSlider;
     public string sceneToLoad;
 
+    float target, progress;
+
     void Start()
     {
         StartCoroutine(LoadSceneAsync());
+    }
+
+    void Update()
+    {
+        progress = Mathf.MoveTowards(progress, target, 5 * Time.deltaTime);
     }
 
     IEnumerator LoadSceneAsync()
@@ -20,7 +28,7 @@ public class LoadScreenManager : MonoBehaviour
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            target = Mathf.Clamp01(operation.progress / 0.9f);
             loadingSlider.value = progress;
 
             // Scene ready
