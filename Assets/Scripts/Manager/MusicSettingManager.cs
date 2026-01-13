@@ -33,6 +33,7 @@ public class MusicSettingManager : MonoBehaviour
     {
         musicSlider.value = PlayerPrefs.GetFloat("Music");
         sfxSlider.value = PlayerPrefs.GetFloat("SFX");
+        DontDestroyOnLoad(musicAudioSource);
 
     }
     private void Update()

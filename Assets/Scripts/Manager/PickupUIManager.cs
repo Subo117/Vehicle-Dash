@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,12 @@ public class PickupUIManager : MonoBehaviour
     [SerializeField] GameObject twiceCoinUI;
     [SerializeField] Slider twiceCoinSlider;
 
+    [Header("Nitro")]
+    [SerializeField] GameObject NitroUI;
+
+    [Header("Missile")]
+    [SerializeField] GameObject MissileUI;
+
     PlayerCollision playerCollision;
 
     private void Start()
@@ -27,7 +34,8 @@ public class PickupUIManager : MonoBehaviour
         UpdatePickupUI(playerCollision.isMagnetActive, playerCollision.magnetTimer, playerCollision.pickupTime, magnetUI, magnetSlider);
         UpdatePickupUI(playerCollision.isShieldActive, playerCollision.shieldTimer, playerCollision.pickupTime, shieldUI, shieldSlider);
         UpdatePickupUI(playerCollision.isTwiceCoinActive, playerCollision.twiceCoinTimer, playerCollision.pickupTime, twiceCoinUI, twiceCoinSlider);
-
+        UpdateBoostUI(playerCollision.isNitroPicked, NitroUI);
+        UpdateBoostUI(playerCollision.isMissilePicked, MissileUI);
     }
 
     void UpdatePickupUI(bool isActive, float timer, float totalTime, GameObject ui, Slider slider)
@@ -45,6 +53,18 @@ public class PickupUIManager : MonoBehaviour
 
         ui.SetActive(true);
         slider.value = timer / totalTime;
+    }
+
+    void UpdateBoostUI(bool isActive, GameObject ui)
+    {
+        if (isActive)
+        {
+            ui.SetActive(true);
+        }
+        else
+        {
+            ui.SetActive(false);
+        }
     }
 
 }
