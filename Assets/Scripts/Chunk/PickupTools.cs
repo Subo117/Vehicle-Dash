@@ -22,8 +22,8 @@ public class PickupTools : MonoBehaviour
     float normalFOV = 60f;
     float zoomOutFOV = 80f;
 
-    float normalYOffset = 10f;
-    float zoomOutYOffset = 5f;
+    float normalYOffset = 12f;
+    float zoomOutYOffset = 7f;
 
     void Start()
     {

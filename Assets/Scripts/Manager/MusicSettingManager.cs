@@ -1,11 +1,18 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MusicSettingManager : MonoBehaviour
 {
 
     public static MusicSettingManager instance;
+
+    [SerializeField] Slider musicSlider;
+    [SerializeField] TMP_Text musicText;
+    [SerializeField] Slider sfxSlider;
+    [SerializeField] TMP_Text sfxText;
 
     [SerializeField] AudioSource mainAudioSource;
     [SerializeField] AudioSource musicAudioSource;
@@ -24,18 +31,29 @@ public class MusicSettingManager : MonoBehaviour
 
     private void Start()
     {
-        musicAudioSource.volume = PlayerPrefs.GetFloat("Music");
+        musicSlider.value = PlayerPrefs.GetFloat("Music");
+        sfxSlider.value = PlayerPrefs.GetFloat("SFX");
+
+    }
+    private void Update()
+    {
+        Debug.Log(musicSlider.value);
     }
 
     public void SetMusicVolume(float vol)
     {
         PlayerPrefs.SetFloat("Music", vol);
-        
+        musicAudioSource.volume = vol;
+
+        musicSlider.value = vol;
+        musicText.text = Mathf.RoundToInt(vol * 100).ToString();
+
     }
     public void SetSFXVolume(float vol)
     {
         PlayerPrefs.SetFloat("SFX", vol);
-
+        sfxSlider.value = vol;
+        sfxText.text = Mathf.RoundToInt(vol * 100).ToString();
     }
 
     public void OnTapSound()

@@ -317,8 +317,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07669731, y: 0.000000028800464, z: -0.0000000022154438, w: 0.99705446}
-  m_LocalPosition: {x: 0, y: 10, z: -20}
+  m_LocalRotation: {x: 0.118067235, y: 0.000000019607272, z: -0.0000000023312825, w: 0.99300563}
+  m_LocalPosition: {x: 0, y: 12, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1458,8 +1458,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057993466}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.076697305, y: 0.000000028800464, z: -0.0000000022154438, w: 0.99705446}
-  m_LocalPosition: {x: 0, y: 10, z: -20}
+  m_LocalRotation: {x: 0.118067235, y: 0.000000019607272, z: -0.0000000023312823, w: 0.99300563}
+  m_LocalPosition: {x: 0, y: 12, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1526,7 +1526,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 10, z: -20}
+  FollowOffset: {x: 0, y: 12, z: -20}
 --- !u!114 &1057993470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2207,6 +2207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd23c63745450794fb1a720b3ab59efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tapClip: {fileID: 8300000, guid: da602409e31169f4db43eaf2fd805f0e, type: 3}
+  crossClip: {fileID: 8300000, guid: 9586322565b438c44b8b82da6adff0af, type: 3}
 --- !u!4 &1340405028
 Transform:
   m_ObjectHideFlags: 0
