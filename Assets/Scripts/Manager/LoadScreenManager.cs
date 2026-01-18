@@ -18,7 +18,7 @@ public class LoadScreenManager : MonoBehaviour
 
     void Update()
     {
-        progress = Mathf.MoveTowards(progress, target, 5 * Time.deltaTime);
+        progress = Mathf.MoveTowards(progress, target, 2 * Time.deltaTime);
     }
 
     IEnumerator LoadSceneAsync()

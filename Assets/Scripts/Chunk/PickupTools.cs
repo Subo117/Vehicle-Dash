@@ -22,7 +22,7 @@ public class PickupTools : MonoBehaviour
     float normalFOV = 60f;
     float zoomOutFOV = 80f;
 
-    float normalYOffset = 12f;
+    float normalYOffset = 10f;
     float zoomOutYOffset = 7f;
 
     void Start()
@@ -33,13 +33,15 @@ public class PickupTools : MonoBehaviour
         cmCamera = FindAnyObjectByType<CinemachineCamera>();
         cmFollow = FindAnyObjectByType<CinemachineFollow>();
 
-        cmCamera.Lens.FieldOfView = normalFOV;
-        cmFollow.FollowOffset.y = normalYOffset;
+        normalFOV = cmCamera.Lens.FieldOfView;
+        normalYOffset = cmFollow.FollowOffset.y;
         
     }
 
     void Update()
     {
+        if (playerCollision.isCrashed) return;
+
         if (playerCollision.isNitroPicked && ability.WasPressedThisFrame())
         {
             Debug.Log("Ability Used");

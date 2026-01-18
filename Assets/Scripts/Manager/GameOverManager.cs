@@ -7,6 +7,8 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject speedometer;
     [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject pickupUI;
+    [SerializeField] GameObject boostUI;
 
     PlayerCollision playerCollision;
 
@@ -20,6 +22,9 @@ public class GameOverManager : MonoBehaviour
     {
         pauseButton.SetActive(false);
         speedometer.SetActive(false);
+        pickupUI.SetActive(false);
+        boostUI.SetActive(false);
+
         playerCollision.isCrashed = true;
         StartCoroutine(CrashedCoroutne());
 
