@@ -26,15 +26,34 @@ public class MusicSettingManager : MonoBehaviour
 
     private void Awake()
     {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("Music");
+        if (!PlayerPrefs.HasKey("Music"))
+        {
+            PlayerPrefs.SetFloat("Music", 1f);
+        }
+        float musicVol = PlayerPrefs.GetFloat("Music");
+        musicSlider.value = musicVol;
         musicAudioSource.volume = musicSlider.value;
-        sfxSlider.value = PlayerPrefs.GetFloat("SFX");
+        musicText.text = Mathf.RoundToInt(musicVol * 100).ToString();
+
+        if (!PlayerPrefs.HasKey("SFX"))
+        {
+            PlayerPrefs.SetFloat("SFX", 1f);
+        }
+        float sfxVol = PlayerPrefs.GetFloat("SFX");
+        sfxSlider.value = sfxVol;
+        sfxText.text = Mathf.RoundToInt(musicVol * 100).ToString();
+
         DontDestroyOnLoad(musicAudioSource);
 
     }
