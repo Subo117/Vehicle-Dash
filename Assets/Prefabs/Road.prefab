@@ -47,14 +47,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 5245603606814652199, guid: dea88c4fb2f722e458f136863647ed09, type: 3}
-  coinSpawnChance: 0.7
-  carSpawnChance: 0.8
-  boostSpawnChance: 0.5
+  coinSpawnChance: 0.8
+  carSpawnChance: 0.7
+  boostSpawnChance: 0.1
   obstacles:
-  - {fileID: 554934183799534611, guid: 6eef2d0ad0f206a41b7cbf3f3c4bc372, type: 3}
-  - {fileID: 4033603183312779342, guid: bac1450b1839c2d4580ff4572d4972e7, type: 3}
+  - {fileID: 1917479146532134645, guid: e1be42b2c1877554494dc4be09662b2b, type: 3}
+  - {fileID: 8824924736032541068, guid: 0ca98241010bdc446a6d39da373c2c51, type: 3}
+  - {fileID: 5693122182860878496, guid: 71341d356ceb41a4698f3314ab4571c5, type: 3}
+  - {fileID: 303806876072329500, guid: 6993987d10bdf8544b2a94d8d661f057, type: 3}
+  - {fileID: 7742879637199280949, guid: 4b5b00e047cc7b545a3fedb5d2656d80, type: 3}
+  - {fileID: 8501009004471568036, guid: 6d7e352868fce294997bed4ab1d90d0c, type: 3}
+  - {fileID: 2754378893416863416, guid: 626d5f1bac0d5d948be7df39c1d3644d, type: 3}
+  - {fileID: 2251512948677878892, guid: 1b91580c32cec764a8b9131df355a2fe, type: 3}
+  - {fileID: 7627744065883451179, guid: b0784ce59827f874ea64040debd62e0f, type: 3}
   boosts:
+  - {fileID: 5245603606814652199, guid: dea88c4fb2f722e458f136863647ed09, type: 3}
   - {fileID: 5245603606814652199, guid: 51fcd39a5b8613f41b705d87c0c06d72, type: 3}
+  - {fileID: 5245603606814652199, guid: 65e661a7a3c00fc4e8fdd431c5330144, type: 3}
+  - {fileID: 5245603606814652199, guid: ab5af5e42ddae3f42820085546e46061, type: 3}
+  - {fileID: 5245603606814652199, guid: 74971266b60510a42bf870993e9896a2, type: 3}
+  - {fileID: 5245603606814652199, guid: fe1b3fbbaed62d84dbfdf40fc22386ff, type: 3}
 --- !u!114 &-4305886148221367097
 MonoBehaviour:
   m_ObjectHideFlags: 0

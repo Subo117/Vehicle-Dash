@@ -83,6 +83,7 @@ public class PlayerCollision : MonoBehaviour
             }
             else
             {
+                Debug.Log("Car");
                 isCrashed = true;
                 playerControl.isMovable = false;
                 smokeVFX.gameObject.SetActive(true);

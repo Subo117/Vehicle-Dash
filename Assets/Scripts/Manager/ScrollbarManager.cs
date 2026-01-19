@@ -11,6 +11,10 @@ public class ScrollbarManager : MonoBehaviour
     [SerializeField] GameObject buyScreen;
     [SerializeField] GameObject purchaseSuccessScreen;
 
+    [Header("Score Text")]
+    [SerializeField] TMP_Text mainScoreText;
+    [SerializeField] TMP_Text startScoreText;
+
 
     string selectedVehicle;
 
@@ -41,6 +45,8 @@ public class ScrollbarManager : MonoBehaviour
                 dullScreenList[vehicles.IndexOf(item)].SetActive(false);
             }
         }
+        mainScoreText.text = GameSaver.Instance.Coins.ToString();
+        startScoreText.text = GameSaver.Instance.Coins.ToString();
     }
 
     public void OnPickup()
@@ -140,6 +146,8 @@ public class ScrollbarManager : MonoBehaviour
             dullScreenList[vehicles.IndexOf(selectedVehicle)].SetActive(false);
             buyScreen.SetActive(false);
             purchaseSuccessScreen.SetActive(true);
+            mainScoreText.text = GameSaver.Instance.Coins.ToString();
+            startScoreText.text = GameSaver.Instance.Coins.ToString();
 
         }
         else

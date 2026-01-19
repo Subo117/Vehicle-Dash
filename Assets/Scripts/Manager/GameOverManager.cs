@@ -7,6 +7,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject speedometer;
     [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject coinsTab;
     [SerializeField] GameObject pickupUI;
     [SerializeField] GameObject boostUI;
 
@@ -22,6 +23,7 @@ public class GameOverManager : MonoBehaviour
     {
         pauseButton.SetActive(false);
         speedometer.SetActive(false);
+        coinsTab.SetActive(false);
         pickupUI.SetActive(false);
         boostUI.SetActive(false);
 

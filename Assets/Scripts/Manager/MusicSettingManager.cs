@@ -9,19 +9,20 @@ public class MusicSettingManager : MonoBehaviour
 
     public static MusicSettingManager instance;
 
+    [Header("Sliders")]
     [SerializeField] Slider musicSlider;
     [SerializeField] TMP_Text musicText;
     [SerializeField] Slider sfxSlider;
     [SerializeField] TMP_Text sfxText;
 
+    [Header("Audiosources")]
     [SerializeField] AudioSource mainAudioSource;
     [SerializeField] AudioSource musicAudioSource;
 
+    [Header("Clips")]
     [SerializeField] AudioClip tapClip;
     [SerializeField] AudioClip crossClip;
     [SerializeField] AudioClip purchaseClip;
-
-
 
     private void Awake()
     {

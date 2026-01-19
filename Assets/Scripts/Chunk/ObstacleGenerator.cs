@@ -32,7 +32,7 @@ public class ObstacleGenerator : MonoBehaviour
 
         GameObject selectedObstacle = obstacles[Random.Range(0, obstacles.Count)];
         Vector3 fencePos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
-        Instantiate(selectedObstacle, fencePos, Quaternion.identity, this.transform);
+        Instantiate(selectedObstacle, fencePos, Quaternion.Euler(0f, 180f, 0f), this.transform);
 
 
     }

@@ -16,6 +16,19 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         MusicSettingManager.instance.PlaySound(tapClip);
     }
+    public void OnRestart()
+    {
+        Time.timeScale = 1f;
+        MusicSettingManager.instance.PlaySound(tapClip);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void OnQuit()
+    {
+        Time.timeScale = 0f;
+        MusicSettingManager.instance.PlaySound(tapClip);
+        Debug.LogWarning("Quiting");
+        Application.Quit();
+    }
 
     public void OnMainMenu()
     {
