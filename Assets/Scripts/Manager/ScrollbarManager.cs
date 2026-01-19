@@ -135,11 +135,9 @@ public class ScrollbarManager : MonoBehaviour
 
     public void OnBuyClick()
     {
-        TMP_Text buyText = buyScreen.GetComponentInChildren<TMP_Text>();
 
         if (GameSaver.Instance.Coins >= vehicleCosts[selectedVehicle] )
         {
-            buyText.text = "Purchased Successfully";
             GameSaver.Instance.SaveCoins(GameSaver.Instance.Coins - vehicleCosts[selectedVehicle]);
             GameSaver.Instance.UnlockVehicle(selectedVehicle);
             Debug.Log(selectedVehicle + " Unlocked");
@@ -152,7 +150,10 @@ public class ScrollbarManager : MonoBehaviour
         }
         else
         {
-            buyText.text = "Not Enough Money";
+            purchaseSuccessScreen.SetActive(true);
+            buyScreen.SetActive(false);
+            TMP_Text text = purchaseSuccessScreen.GetComponentInChildren<TMP_Text>();
+            text.text = "Not Enough Money";
         }
     }
 

@@ -10,26 +10,19 @@ public class SoundControl : MonoBehaviour
     [SerializeField] Slider sfxSlider;
     [SerializeField] TMP_Text sfxText;
 
-    [Header("Audio Source")]
-    [SerializeField] AudioSource musicAudioSource;
-
 
     void Start()
     {
-        if (!PlayerPrefs.HasKey("Music"))
-        {
-            PlayerPrefs.SetFloat("Music", 1f);
-        }
-        float musicVol = PlayerPrefs.GetFloat("Music");
+        float musicVol = PlayerPrefs.GetFloat("Music", 1f);
         musicSlider.value = musicVol;
-        musicAudioSource.volume = musicSlider.value;
         musicText.text = Mathf.RoundToInt(musicVol * 100).ToString();
 
-        if (!PlayerPrefs.HasKey("SFX"))
+        if (MusicAudioSourceController.Instance != null)
         {
-            PlayerPrefs.SetFloat("SFX", 1f);
+            MusicAudioSourceController.Instance.GetComponent<AudioSource>().volume = musicVol;
         }
-        float sfxVol = PlayerPrefs.GetFloat("SFX");
+
+        float sfxVol = PlayerPrefs.GetFloat("SFX", 1f);
         sfxSlider.value = sfxVol;
         sfxText.text = Mathf.RoundToInt(sfxVol * 100).ToString();
     }
