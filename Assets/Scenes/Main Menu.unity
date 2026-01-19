@@ -968,8 +968,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1336811173}
-        m_TargetAssemblyTypeName: MusicSettingManager, Assembly-CSharp
+      - m_Target: {fileID: 307839337}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1682,6 +1682,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294180283}
   m_CullTransparentMesh: 1
+--- !u!1 &307839336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307839338}
+  - component: {fileID: 307839337}
+  m_Layer: 0
+  m_Name: Sound Control
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &307839337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307839336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4189d7116789a6949a91b395373c4561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 119348550}
+  musicText: {fileID: 757234471}
+  sfxSlider: {fileID: 324481499}
+  sfxText: {fileID: 254731566}
+  musicAudioSource: {fileID: 411030559}
+--- !u!4 &307839338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307839336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &316022730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,8 +2034,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1336811173}
-        m_TargetAssemblyTypeName: MusicSettingManager, Assembly-CSharp
+      - m_Target: {fileID: 307839337}
+        m_TargetAssemblyTypeName: SoundControl, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
         m_Arguments:
@@ -2703,6 +2752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411030560}
   - component: {fileID: 411030559}
+  - component: {fileID: 411030561}
   m_Layer: 0
   m_Name: Music AudioSource
   m_TagString: Untagged
@@ -2822,6 +2872,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411030561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411030558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b170acdfade71459edf54bbad7fd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &442850007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,7 +4045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6615,12 +6677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e311a3877b4f0448ca2b930800648e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 119348550}
-  musicText: {fileID: 757234471}
-  sfxSlider: {fileID: 324481499}
-  sfxText: {fileID: 254731566}
   mainAudioSource: {fileID: 6869367524256205361, guid: 1fafe57801a34f14689470d7f5bd3129, type: 3}
-  musicAudioSource: {fileID: 411030559}
   tapClip: {fileID: 8300000, guid: da602409e31169f4db43eaf2fd805f0e, type: 3}
   crossClip: {fileID: 8300000, guid: 9586322565b438c44b8b82da6adff0af, type: 3}
   purchaseClip: {fileID: 8300000, guid: bd0c4ba10028b8f45ba14180dbd5ee93, type: 3}
@@ -10131,3 +10188,4 @@ SceneRoots:
   - {fileID: 677184282}
   - {fileID: 1336811174}
   - {fileID: 411030560}
+  - {fileID: 307839338}
