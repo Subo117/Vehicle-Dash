@@ -56,7 +56,7 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Crashed");
             gameOverManager.OnGameOver();
         }
-        if (Keyboard.current.cKey.wasPressedThisFrame) isCrashable = !isCrashable;
+        //if (Keyboard.current.cKey.wasPressedThisFrame) isCrashable = !isCrashable;
 
 
     }
